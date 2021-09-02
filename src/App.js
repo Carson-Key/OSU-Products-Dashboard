@@ -1,13 +1,21 @@
+// Packages
+import { useEffect, useState } from 'react'
+
 const App = () => {
-	fetch('https://status.box.com/api/v2/status.json')
+	const [boxStatus, setBoxStatus] = useState({status: {description: "loading..."}})
+
+	useEffect(() => {
+		fetch('https://status.box.com/api/v2/status.json')
 		.then((response) => response.json())
 		.then((json) => {
-			console.log(json)
+			setBoxStatus(json)
 		})
+	}, [])
 
 	return (
 		<>
-			hello world
+			<p>Box Status:</p>
+			<p>{boxStatus.status.description}</p>
 		</>
 	)
 }
