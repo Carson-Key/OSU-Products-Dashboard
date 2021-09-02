@@ -6,10 +6,10 @@ const App = () => {
 
 	useEffect(() => {
 		fetch('https://status.box.com/api/v2/status.json')
-		.then((response) => response.json())
-		.then((json) => {
-			setBoxStatus(json)
-		})
+			.then((response) => response.json())
+			.then((json) => {
+				setBoxStatus(json)
+			})
 	}, [])
 
 	return (
