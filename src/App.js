@@ -1,13 +1,13 @@
 // Packages
 import { useEffect, useState } from 'react'
 // Helpers
-import { fetchJSON, apiLinks, apiInitStatusState } from './helpers/statusAPICall.js'
+import { fetchJSON, apiLinks, apiInitSummaryState } from './helpers/statusAPICall.js'
 
 const App = () => {
-	const [boxStatus, setBoxStatus] = useState(apiInitStatusState)
-	const [kalturaSatus, setKalturaSatus] = useState(apiInitStatusState)
-	const [instructureSatus, setInstructureSatus] = useState(apiInitStatusState)
-	const [zoomSatus, setZoomSatus] = useState(apiInitStatusState)
+	const [boxStatus, setBoxStatus] = useState(apiInitSummaryState)
+	const [kalturaSatus, setKalturaSatus] = useState(apiInitSummaryState)
+	const [instructureSatus, setInstructureSatus] = useState(apiInitSummaryState)
+	const [zoomSatus, setZoomSatus] = useState(apiInitSummaryState)
 
 	useEffect(() => {
 		fetchJSON(apiLinks.Box, setBoxStatus)

@@ -1,4 +1,4 @@
-export const apiInitStatusState = {
+export const apiInitSummaryState = {
     status: {
         description: "loading..."
     }
