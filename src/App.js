@@ -20,6 +20,13 @@ const App = () => {
 		<>
 			<p>Box Status:</p>
 			<p>{boxSummary.status.description}</p>
+			{
+				boxSummary.incidents.map((item, i) => {
+					return (
+						<p key={i}>{item.name}</p>
+					)
+				})
+			}
 			<br />
 			<p>Kaltura Status:</p>
 			<p>{kalturaSummary.status.description}</p>
