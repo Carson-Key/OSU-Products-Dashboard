@@ -1,3 +1,9 @@
+export const apiInitStatusState = {
+    status: {
+        description: "loading..."
+    }
+}
+
 export const apiLinks = {
     Box: 'https://status.box.com/api/v2/status.json',
     Kaltura: 'https://status.kaltura.com/api/v2/status.json',
