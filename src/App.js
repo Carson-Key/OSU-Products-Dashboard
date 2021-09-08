@@ -1,6 +1,6 @@
 // Packages
 import { useEffect, useState } from 'react'
-// Helperss
+// Helpers
 import { fetchJSON } from './helpers/statusAPICall.js'
 
 const App = () => {
