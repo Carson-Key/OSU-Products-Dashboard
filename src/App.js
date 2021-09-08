@@ -4,31 +4,31 @@ import { useEffect, useState } from 'react'
 import { fetchJSON, apiLinks, apiInitSummaryState } from './helpers/statusAPICall.js'
 
 const App = () => {
-	const [boxStatus, setBoxStatus] = useState(apiInitSummaryState)
-	const [kalturaSatus, setKalturaSatus] = useState(apiInitSummaryState)
-	const [instructureSatus, setInstructureSatus] = useState(apiInitSummaryState)
-	const [zoomSatus, setZoomSatus] = useState(apiInitSummaryState)
+	const [boxSummary, setBoxSummary] = useState(apiInitSummaryState)
+	const [kalturaSummary, setKalturaSummary] = useState(apiInitSummaryState)
+	const [instructureSummary, setInstructureSummary] = useState(apiInitSummaryState)
+	const [zoomSummary, setZoomSummary] = useState(apiInitSummaryState)
 
 	useEffect(() => {
-		fetchJSON(apiLinks.Box, setBoxStatus)
-		fetchJSON(apiLinks.Kaltura, setKalturaSatus)
-		fetchJSON(apiLinks.Instructure, setInstructureSatus)
-		fetchJSON(apiLinks.Zoom, setZoomSatus)
+		fetchJSON(apiLinks.Box, setBoxSummary)
+		fetchJSON(apiLinks.Kaltura, setKalturaSummary)
+		fetchJSON(apiLinks.Instructure, setInstructureSummary)
+		fetchJSON(apiLinks.Zoom, setZoomSummary)
 	}, [])
 
 	return (
 		<>
 			<p>Box Status:</p>
-			<p>{boxStatus.status.description}</p>
+			<p>{boxSummary.status.description}</p>
 			<br />
 			<p>Kaltura Status:</p>
-			<p>{kalturaSatus.status.description}</p>
+			<p>{kalturaSummary.status.description}</p>
 			<br />
 			<p>Instructor Status:</p>
-			<p>{instructureSatus.status.description}</p>
+			<p>{instructureSummary.status.description}</p>
 			<br />
 			<p>Zoom Status:</p>
-			<p>{zoomSatus.status.description}</p>
+			<p>{zoomSummary.status.description}</p>
 		</>
 	)
 }
