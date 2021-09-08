@@ -1,5 +1,7 @@
 // Packages
 import { useEffect, useState } from 'react'
+// Helperss
+import { fetchJSON } from './helpers/statusAPICall.js'
 
 const App = () => {
 	const [boxStatus, setBoxStatus] = useState({status: {description: "loading..."}})
@@ -8,29 +10,10 @@ const App = () => {
 	const [zoomSatus, setZoomSatus] = useState({status: {description: "loading..."}})
 
 	useEffect(() => {
-		fetch('https://status.box.com/api/v2/status.json')
-			.then((response) => response.json())
-			.then((json) => {
-				setBoxStatus(json)
-			})
-
-		fetch('https://status.kaltura.com/api/v2/status.json')
-			.then((response) => response.json())
-			.then((json) => {
-				setKalturaSatus(json)
-			})
-
-		fetch('https://status.instructure.com/api/v2/status.json')
-			.then((response) => response.json())
-			.then((json) => {
-				setInstructureSatus(json)
-			})
-
-		fetch('https://status.zoom.us/api/v2/status.json')
-			.then((response) => response.json())
-			.then((json) => {
-				setZoomSatus(json)
-			})
+		fetchJSON('https://status.box.com/api/v2/status.json', setBoxStatus)
+		fetchJSON('https://status.kaltura.com/api/v2/status.json', setKalturaSatus)
+		fetchJSON('https://status.instructure.com/api/v2/status.json', setInstructureSatus)
+		fetchJSON('https://status.zoom.us/api/v2/status.json', setZoomSatus)
 	}, [])
 
 	return (
