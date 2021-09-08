@@ -12,7 +12,7 @@ const Summary = (props) => {
 	}, [api])
 
 	return (
-		<>
+		<section className="w-auto">
 			<p>{api.name} Status:</p>
 			<p>{summary.status.description}</p>
 			{
@@ -23,7 +23,7 @@ const Summary = (props) => {
 				})
 			}
 			<br />
-		</>
+		</section>
 	)
 }
 
