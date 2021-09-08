@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 const App = () => {
 	const [boxStatus, setBoxStatus] = useState({status: {description: "loading..."}})
-	const [kalturaSatus, setKalturaSatus] = useState("loading...")
+	const [kalturaSatus, setKalturaSatus] = useState({status: {description: "loading..."}})
 
 	useEffect(() => {
 		fetch('https://status.box.com/api/v2/status.json')
@@ -12,14 +12,10 @@ const App = () => {
 				setBoxStatus(json)
 			})
 
-		fetch('https://status.kaltura.com')
-			.then((response) => {
-				return response.text()
-			})
-			.then((html) => {
-				let parser = new DOMParser()
-				console.log(parser.parseFromString(html, 'text/html'))
-			
+		fetch('https://status.kaltura.com/api/v2/status.json')
+			.then((response) => response.json())
+			.then((json) => {
+				setKalturaSatus(json)
 			})
 	}, [])
 
@@ -28,7 +24,7 @@ const App = () => {
 			<p>Box Status:</p>
 			<p>{boxStatus.status.description}</p>
 			<p>Kaltura Status:</p>
-			<p>{kalturaSatus}</p>
+			<p>{kalturaSatus.status.description}</p>
 		</>
 	)
 }
