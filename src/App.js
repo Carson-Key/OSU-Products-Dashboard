@@ -30,12 +30,33 @@ const App = () => {
 			<br />
 			<p>Kaltura Status:</p>
 			<p>{kalturaSummary.status.description}</p>
+			{
+				kalturaSummary.incidents.map((item, i) => {
+					return (
+						<p key={i}>{item.name}</p>
+					)
+				})
+			}
 			<br />
 			<p>Instructor Status:</p>
 			<p>{instructureSummary.status.description}</p>
+			{
+				instructureSummary.incidents.map((item, i) => {
+					return (
+						<p key={i}>{item.name}</p>
+					)
+				})
+			}
 			<br />
 			<p>Zoom Status:</p>
 			<p>{zoomSummary.status.description}</p>
+			{
+				zoomSummary.incidents.map((item, i) => {
+					return (
+						<p key={i}>{item.name}</p>
+					)
+				})
+			}
 		</>
 	)
 }
