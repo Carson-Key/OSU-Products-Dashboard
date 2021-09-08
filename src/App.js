@@ -5,6 +5,7 @@ const App = () => {
 	const [boxStatus, setBoxStatus] = useState({status: {description: "loading..."}})
 	const [kalturaSatus, setKalturaSatus] = useState({status: {description: "loading..."}})
 	const [instructureSatus, setInstructureSatus] = useState({status: {description: "loading..."}})
+	const [zoomSatus, setZoomSatus] = useState({status: {description: "loading..."}})
 
 	useEffect(() => {
 		fetch('https://status.box.com/api/v2/status.json')
@@ -24,6 +25,12 @@ const App = () => {
 			.then((json) => {
 				setInstructureSatus(json)
 			})
+
+		fetch('https://status.zoom.us/api/v2/status.json')
+			.then((response) => response.json())
+			.then((json) => {
+				setZoomSatus(json)
+			})
 	}, [])
 
 	return (
@@ -34,6 +41,8 @@ const App = () => {
 			<p>{kalturaSatus.status.description}</p>
 			<p>Instructor Status:</p>
 			<p>{instructureSatus.status.description}</p>
+			<p>Zoom Status:</p>
+			<p>{zoomSatus.status.description}</p>
 		</>
 	)
 }
