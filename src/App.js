@@ -20,10 +20,13 @@ const App = () => {
 		<>
 			<p>Box Status:</p>
 			<p>{boxStatus.status.description}</p>
+			<br />
 			<p>Kaltura Status:</p>
 			<p>{kalturaSatus.status.description}</p>
+			<br />
 			<p>Instructor Status:</p>
 			<p>{instructureSatus.status.description}</p>
+			<br />
 			<p>Zoom Status:</p>
 			<p>{zoomSatus.status.description}</p>
 		</>
