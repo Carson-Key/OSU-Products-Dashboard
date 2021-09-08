@@ -1,7 +1,12 @@
 export const apiInitSummaryState = {
     status: {
         description: "loading..."
-    }
+    },
+    incidents: [
+        {
+            name: "loading..."
+        }
+    ]
 }
 
 export const apiLinks = {
