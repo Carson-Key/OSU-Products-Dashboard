@@ -9,11 +9,23 @@ export const apiInitSummaryState = {
     ]
 }
 
-export const apiLinks = {
-    Box: 'https://status.box.com/api/v2/summary.json',
-    Kaltura: 'https://status.kaltura.com/api/v2/summary.json',
-    Instructure: 'https://status.instructure.com/api/v2/summary.json',
-    Zoom: 'https://status.zoom.us/api/v2/summary.json'
+export const APIs = {
+    Box: { 
+        name: "Box",
+        link: 'https://status.box.com/api/v2/summary.json' 
+    },
+    Kaltura: { 
+        name: "Kaltura",
+        link: 'https://status.kaltura.com/api/v2/summary.json'
+    },
+    Instructure: { 
+        name: "Instructure",
+        link: 'https://status.instructure.com/api/v2/summary.json'
+    },
+    Zoom: { 
+        name: "Zoom",
+        link: 'https://status.zoom.us/api/v2/summary.json'
+    }
 }
 
 export const fetchJSON = (url, setState) => {
