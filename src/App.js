@@ -1,7 +1,7 @@
 // Packages
 import { useEffect, useState } from 'react'
 // Helpers
-import { fetchJSON } from './helpers/statusAPICall.js'
+import { fetchJSON, apiLinks } from './helpers/statusAPICall.js'
 
 const App = () => {
 	const [boxStatus, setBoxStatus] = useState({status: {description: "loading..."}})
@@ -10,10 +10,10 @@ const App = () => {
 	const [zoomSatus, setZoomSatus] = useState({status: {description: "loading..."}})
 
 	useEffect(() => {
-		fetchJSON('https://status.box.com/api/v2/status.json', setBoxStatus)
-		fetchJSON('https://status.kaltura.com/api/v2/status.json', setKalturaSatus)
-		fetchJSON('https://status.instructure.com/api/v2/status.json', setInstructureSatus)
-		fetchJSON('https://status.zoom.us/api/v2/status.json', setZoomSatus)
+		fetchJSON(apiLinks.Box, setBoxStatus)
+		fetchJSON(apiLinks.Kaltura, setKalturaSatus)
+		fetchJSON(apiLinks.Instructure, setInstructureSatus)
+		fetchJSON(apiLinks.Zoom, setZoomSatus)
 	}, [])
 
 	return (
