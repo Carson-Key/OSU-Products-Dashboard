@@ -12,7 +12,7 @@ const Summary = (props) => {
 	}, [api])
 
 	return (
-		<section className="w-auto">
+		<section className="w-auto mx-auto mt-4 border-2 p-3">
 			<p>{api.name} Status:</p>
 			<p>{summary.status.description}</p>
 			{
