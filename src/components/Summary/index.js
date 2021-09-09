@@ -15,13 +15,29 @@ const Summary = (props) => {
 		<section className="w-auto mx-auto mt-4 border-2 p-3">
 			<p>{api.name} Status:</p>
 			<p>{summary.status.description}</p>
-			{
-				summary.incidents.map((item, i) => {
-					return (
-						<p key={i}>{item.name}</p>
-					)
-				})
-			}
+			<ul>
+				{
+					summary.incidents.map((incident, i) => {
+						return (
+							<li key={i}>
+								<p>{incident.name}</p>
+								<p>{incident.impact}</p>
+								<ul>
+									{
+										incident.incident_updates.map((update, i) => {
+											return (
+												<li>
+													<p>{update.body}</p>
+												</li>
+											)
+										})
+									}
+								</ul>
+							</li>
+						)
+					})
+				}
+			</ul>
 			<br />
 		</section>
 	)
