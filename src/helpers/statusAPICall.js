@@ -5,7 +5,7 @@ export const apiInitSummaryState = {
     incidents: [
         {
             name: "loading...",
-            impact: "critical",
+            impact: "loading...",
             incident_updates: []
         }
     ]
