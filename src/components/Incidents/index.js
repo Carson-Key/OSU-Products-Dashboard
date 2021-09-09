@@ -1,3 +1,6 @@
+// Components
+import Updates from '../Updates'
+
 const Incidents = (props) => {
     const { incidents } = props
 
@@ -9,17 +12,7 @@ const Incidents = (props) => {
                         <li key={i}>
                             <p>{incident.name}</p>
                             <p>{incident.impact}</p>
-                            <ul>
-                                {
-                                    incident.incident_updates.map((update, i) => {
-                                        return (
-                                            <li>
-                                                <p>{update.body}</p>
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
+                            <Updates incidentUpdates={incident.incident_updates} />
                         </li>
                     )
                 })
