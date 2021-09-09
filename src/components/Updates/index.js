@@ -6,7 +6,7 @@ const Updates = (props) => {
             {
                 incidentUpdates.map((update, i) => {
                     return (
-                        <li>
+                        <li key={i}>
                             <p>{update.body}</p>
                         </li>
                     )
