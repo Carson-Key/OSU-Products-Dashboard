@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 // Components
 import Status from '../Status'
+import Incidents from '../Incidents'
 // Helpers
 import { fetchJSON, apiInitSummaryState } from '../../helpers/statusAPICall.js'
 
@@ -16,29 +17,7 @@ const Summary = (props) => {
 	return (
 		<section className="w-auto mx-auto mt-4 border-2 p-3">
 			<Status name={api.name} description={summary.status.description}/>
-			<ul>
-				{
-					summary.incidents.map((incident, i) => {
-						return (
-							<li key={i}>
-								<p>{incident.name}</p>
-								<p>{incident.impact}</p>
-								<ul>
-									{
-										incident.incident_updates.map((update, i) => {
-											return (
-												<li>
-													<p>{update.body}</p>
-												</li>
-											)
-										})
-									}
-								</ul>
-							</li>
-						)
-					})
-				}
-			</ul>
+			<Incidents incidents={summary.incidents} />
 			<br />
 		</section>
 	)
