@@ -18,7 +18,6 @@ const Summary = (props) => {
 		<section className="w-auto mx-auto mt-4 border-2 p-3">
 			<Status name={api.name} description={summary.status.description}/>
 			<Incidents incidents={summary.incidents} />
-			<br />
 		</section>
 	)
 }
