@@ -1,5 +1,5 @@
 // Helpers
-import Active from './ExampleAPICalls/active.js'
+import None from './ExampleAPICalls/none.js'
 import { APIs, apiInitSummaryState as importAPIInitSummaryState } from './statusAPICall.js'
 
 export const apiInitSummaryState = {...importAPIInitSummaryState}
@@ -30,5 +30,5 @@ export const testFetchJSON = (setState, status) => {
 }
 
 const testStatus = {
-    0: Active
+    0: None
 }
