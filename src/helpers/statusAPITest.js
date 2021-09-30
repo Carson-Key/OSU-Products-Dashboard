@@ -1,5 +1,6 @@
 // Helpers
 import None from './ExampleAPICalls/none.js'
+import Minor from './ExampleAPICalls/minor.js'
 import { APIs, apiInitSummaryState as importAPIInitSummaryState } from './statusAPICall.js'
 
 export const apiInitSummaryState = {...importAPIInitSummaryState}
@@ -7,7 +8,7 @@ export const apiInitSummaryState = {...importAPIInitSummaryState}
 export const fetchJSON = (url, setState) => {
     switch (url) {
         case APIs.Box.link:
-            testFetchJSON(setState, 0)
+            testFetchJSON(setState, 1)
             break;
         case APIs.Kaltura.link:
             testFetchJSON(setState, 0)
@@ -30,5 +31,6 @@ export const testFetchJSON = (setState, status) => {
 }
 
 const testStatus = {
-    0: None
+    0: None,
+    1: Minor
 }
