@@ -1,4 +1,4 @@
-const active = {
+const none = {
     "page": {
         "id": "nlxv32btr6v7",
         "name": "Instructure",
@@ -36,4 +36,4 @@ const active = {
     }
 }
 
-export default active
+export default none
