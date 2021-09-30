@@ -1,14 +1,14 @@
-export const determineStatusBG = (indicator) => {
-    switch (indicator) {
-        case "none":
-            return "bg-green-400"
-        case "minor":
-            return "bg-yellow-400"
-        case "major":
-            return "bg-red-500"
-        case "critical":
-            return "bg-red-900"
-        default:
-            return "bg-gray-400"
-    }
+// Helpers
+import { parseStatus } from './parseSatus.js'
+
+const classColors = {
+    "none": "bg-green-400",
+    "minor": "bg-yellow-400",
+    "major": "bg-red-500",
+    "critical": "bg-red-900",
+    "other": "bg-gray-400"
+}
+
+export const determineStatusBG = (status) => {
+    return parseStatus(status, classColors)
 }
