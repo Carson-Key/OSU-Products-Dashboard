@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 // Components
 import Status from '../Status'
+import StatusRender from '../StatusRender'
 import Incidents from '../Incidents'
-import ConditionalRender from '../ConditionalRender'
 // Helpers
 import { fetchJSON, apiInitSummaryState } from '../../helpers/statusAPICall.js'
 import { determineStatusBG } from '../../helpers/className'
@@ -27,9 +27,16 @@ const Summary = (props) => {
 				color={statusColor} 
 				description={summary.status.description}
 			/>
-			<ConditionalRender>
-				<Incidents incidents={summary.incidents} />
-			</ConditionalRender>
+			<StatusRender 
+				status={summary.status.indicator}
+				renderObject={{
+					"none": "green",
+					"minor": <Incidents incidents={summary.incidents} />,
+					"major": <Incidents incidents={summary.incidents} />,
+					"critical": <Incidents incidents={summary.incidents} />,
+					"other": "loading..."
+				}}
+			/>
 		</section>
 	)
 }
