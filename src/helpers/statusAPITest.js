@@ -8,7 +8,7 @@ export const apiInitSummaryState = {...importAPIInitSummaryState}
 export const fetchJSON = (url, setState) => {
     switch (url) {
         case APIs.Box.link:
-            testFetchJSON(setState, 1)
+            testFetchJSON(setState, 0)
             break;
         case APIs.Kaltura.link:
             testFetchJSON(setState, 0)
@@ -32,5 +32,6 @@ export const testFetchJSON = (setState, status) => {
 
 const testStatus = {
     0: None,
-    1: Minor
+    1: Minor,
+    5: apiInitSummaryState,
 }
