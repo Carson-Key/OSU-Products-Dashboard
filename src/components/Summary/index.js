@@ -21,8 +21,12 @@ const Summary = (props) => {
 	}, [summary])
 
 	return (
-		<section className="w-72 h-72">
-			<Status name={api.name} color={statusColor} description={summary.status.description}/>
+		<section className="w-72 h-72 rounded-lg border-2">
+			<Status 
+				name={api.name} 
+				color={statusColor} 
+				description={summary.status.description}
+			/>
 			<ConditionalRender>
 				<Incidents incidents={summary.incidents} />
 			</ConditionalRender>
