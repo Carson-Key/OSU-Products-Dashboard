@@ -5,7 +5,7 @@ import { APIs } from './helpers/statusAPICall.js'
 
 const App = () => {
 	return (
-		<main className="flex flex-wrap justify-evenly">
+		<main className="flex flex-wrap justify-evenly py-4">
 			<Summary api={APIs.Box} />
 			<Summary api={APIs.Kaltura} />
 			<Summary api={APIs.Instructure} />
