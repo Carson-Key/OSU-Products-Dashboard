@@ -23,7 +23,7 @@ const Summary = (props) => {
 	}, [summary])
 
 	return (
-		<section className="mt-8 w-72 h-72 rounded-xl border-2">
+		<section className="my-8 w-72 h-72 rounded-xl border-2">
 			<Status 
 				name={api.name} 
 				color={statusColor} 
