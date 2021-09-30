@@ -7,6 +7,5 @@ const defaultReturns = {
 }
 
 export const parseStatus = (status, returnValues = defaultReturns) => {
-    console.log(returnValues[status] ? returnValues[status] : returnValues["other"])
     return returnValues[status] ? returnValues[status] : returnValues["other"]
 }
