@@ -5,6 +5,7 @@ import Status from '../Status'
 import StatusRender from '../StatusRender'
 import Incidents from '../Incidents'
 import Loading from '../Loading'
+import StatusNone from '../StatusNone'
 // Helpers
 import { fetchJSON, apiInitSummaryState } from '../../helpers/statusAPICall.js'
 import { determineStatusBG } from '../../helpers/className'
@@ -31,7 +32,7 @@ const Summary = (props) => {
 			<StatusRender 
 				status={summary.status.indicator}
 				renderObject={{
-					"none": "green",
+					"none": <StatusNone />,
 					"minor": <Incidents incidents={summary.incidents} />,
 					"major": <Incidents incidents={summary.incidents} />,
 					"critical": <Incidents incidents={summary.incidents} />,
