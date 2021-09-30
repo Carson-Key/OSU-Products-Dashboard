@@ -8,7 +8,22 @@ const classColors = {
     "critical": "bg-red-900",
     "other": "bg-gray-400"
 }
+const borderColors = {
+    // "none": "border-2 border-green-400",
+    // "minor": "border-2 border-yellow-400",
+    // "major": "border-2 border-red-500",
+    // "critical": "border-2 border-red-900",
+    // "other": "border-2 border-gray-400"
+    "none": "border-2",
+    "minor": "border-2",
+    "major": "border-2",
+    "critical": "border-2",
+    "other": "border-2"
+}
 
+export const determineStatusBorder = (status) => {
+    return parseStatus(status, borderColors)
+}
 export const determineStatusBG = (status) => {
     return parseStatus(status, classColors)
 }
