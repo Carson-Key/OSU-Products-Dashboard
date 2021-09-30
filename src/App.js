@@ -6,11 +6,11 @@ import { APIs } from './helpers/statusAPICall.js'
 const App = () => {
 	return (
 		<main className="flex">
-			<div className="grid grid-flow-col gap-2 w-full">
+			<div className="mt-4 w-auto h-auto mx-auto">
 				<Summary api={APIs.Box} />
-				<Summary api={APIs.Kaltura} />
+				{/* <Summary api={APIs.Kaltura} />
 				<Summary api={APIs.Instructure} />
-				<Summary api={APIs.Zoom} />
+				<Summary api={APIs.Zoom} /> */}
 			</div>
 		</main>
 	)
