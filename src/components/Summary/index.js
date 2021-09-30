@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Status from '../Status'
 import StatusRender from '../StatusRender'
 import Incidents from '../Incidents'
+import Loading from '../Loading'
 // Helpers
 import { fetchJSON, apiInitSummaryState } from '../../helpers/statusAPICall.js'
 import { determineStatusBG } from '../../helpers/className'
@@ -34,7 +35,7 @@ const Summary = (props) => {
 					"minor": <Incidents incidents={summary.incidents} />,
 					"major": <Incidents incidents={summary.incidents} />,
 					"critical": <Incidents incidents={summary.incidents} />,
-					"other": "loading..."
+					"other": <Loading />
 				}}
 			/>
 		</section>
