@@ -8,6 +8,7 @@ import Incidents from '../Incidents'
 import Loading from '../Loading'
 import StatusNone from '../StatusNone'
 import AddNewStatus from '../AddNewStatus'
+import AddStatusHead from '../AddStatusHead'
 // Helpers
 import { apiInitSummaryState } from '../../helpers/statusAPIObjects'
 import { fetchJSON } from '../../helpers/statusAPICall.js'
@@ -33,11 +34,7 @@ const Summary = (props) => {
 				status={summary.status.indicator}
 				renderObject={{
 					"add": 
-						<StatusHead
-							name={api.name} 
-							color={statusColor} 
-							description={summary.status.description} 
-						/>,
+						<AddStatusHead name={api.name} color={statusColor} />,
 					"other": 
 						<StatusHead
 							name={api.name} 
