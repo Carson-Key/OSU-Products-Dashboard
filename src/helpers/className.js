@@ -14,11 +14,6 @@ const borderColors = {
     "major": "border-2 border-red-500",
     "critical": "border-2 border-red-900",
     "other": "border-2 border-gray-400"
-    // "none": "border-2",
-    // "minor": "border-2",
-    // "major": "border-2",
-    // "critical": "border-2",
-    // "other": "border-2"
 }
 
 export const determineStatusBorder = (status) => {
