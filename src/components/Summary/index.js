@@ -28,7 +28,7 @@ const Summary = (props) => {
 	}, [summary])
 
 	return (
-		<section className={statusBorderColor + " my-4 w-72 h-72 rounded-xl bg-white"}>
+		<section className={statusBorderColor + " m-4 w-72 h-72 rounded-xl bg-white"}>
 			<StatusRender
 				status={summary.status.indicator}
 				renderObject={{
