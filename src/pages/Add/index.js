@@ -28,10 +28,6 @@ const Add = () => {
         setApiCookie('APIs', enabledCards, { path: '/' })
     }
 
-    useEffect(() => {
-        console.log(enabledCards)
-    }, [])
-
 	return (
         <div className="flex flex-wrap justify-evenly">
             <form className="w-2/3 flex flex-wrap justify-evenly">
