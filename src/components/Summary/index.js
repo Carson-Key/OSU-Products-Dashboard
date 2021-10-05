@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react'
 // Component
 import StatusHead from '../StatusHead'
-import StatusBodyRender from '../StatusBodyRender'
-import StatusHeadRender from '../StatusHeadRender'
+import StatusRender from '../StatusRender'
 import Incidents from '../Incidents'
 import Loading from '../Loading'
 import StatusNone from '../StatusNone'
@@ -30,7 +29,7 @@ const Summary = (props) => {
 
 	return (
 		<section className={statusBorderColor + " my-4 w-72 h-72 rounded-xl bg-white"}>
-			<StatusHeadRender
+			<StatusRender
 				status={summary.status.indicator}
 				renderObject={{
 					"add": 
@@ -43,7 +42,7 @@ const Summary = (props) => {
 						/>
 				}}
 			/>
-			<StatusBodyRender 
+			<StatusRender 
 				status={summary.status.indicator}
 				renderObject={{
 					"none": <StatusNone />,
