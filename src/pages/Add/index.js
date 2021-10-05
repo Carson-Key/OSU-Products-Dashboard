@@ -26,10 +26,10 @@ const Add = () => {
                 {
                     defaultAPISArray.map((api, i) => {
                         if (APIs[api].link === AddURL) {
-                            return <></>
+                            return null
                         } else {
                             return (
-                                <label className="mx-4">
+                                <label key={i} className="mx-4">
                                     {api}
                                     <input
                                         name={api}
