@@ -16,7 +16,7 @@ const App = () => {
 					Products Status
 				</p>
 			</header>
-			<main className="h-screen my-10">
+			<main className="my-10">
 				<Switch>
 					<Route path="/add">
 						<Add />
