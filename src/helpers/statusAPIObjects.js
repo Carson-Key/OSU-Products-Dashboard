@@ -34,7 +34,7 @@ export const APIs = {
         link: 'https://status.zoom.us/api/v2/summary.json'
     },
     AddAPI: { 
-        name: "Add",
+        name: "Add Status Panel",
         link: AddURL
     }
 }
