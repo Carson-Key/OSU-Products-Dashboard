@@ -1,8 +1,9 @@
 // Packages
 import { useEffect, useState } from 'react'
-// Components
-import Status from '../Status'
+// Component
+import StatusHead from '../StatusHead'
 import StatusBodyRender from '../StatusBodyRender'
+import StatusHeadRender from '../StatusHeadRender'
 import Incidents from '../Incidents'
 import Loading from '../Loading'
 import StatusNone from '../StatusNone'
@@ -28,10 +29,22 @@ const Summary = (props) => {
 
 	return (
 		<section className={statusBorderColor + " my-4 w-72 h-72 rounded-xl bg-white"}>
-			<Status 
-				name={api.name} 
-				color={statusColor} 
-				description={summary.status.description}
+			<StatusHeadRender
+				status={summary.status.indicator}
+				renderObject={{
+					"add": 
+						<StatusHead
+							name={api.name} 
+							color={statusColor} 
+							description={summary.status.description} 
+						/>,
+					"other": 
+						<StatusHead
+							name={api.name} 
+							color={statusColor} 
+							description={summary.status.description} 
+						/>
+				}}
 			/>
 			<StatusBodyRender 
 				status={summary.status.indicator}
