@@ -1,8 +1,24 @@
+// Package
+import { useState } from 'react'
 // Helpers
 import { APIs, AddURL } from '../../helpers/statusAPIObjects.js'
+import { defaultObjectValue } from '../../helpers/basic.js'
 
 const Add = () => {
+    const [enabledCards, setEnabledCards] = useState({})
     const defaultAPISArray = Object.keys(APIs)
+
+    const toggleStatusAPI = (event, enabledCards, api) => {
+        let newStateValue = {...enabledCards}
+
+        if (newStateValue[api]) {
+            delete newStateValue[api]
+        } else {
+            newStateValue[api] = APIs[api]
+        }
+        
+        setEnabledCards(newStateValue)
+    }
 
 	return (
         <div className="flex flex-wrap justify-evenly">
@@ -18,6 +34,8 @@ const Add = () => {
                                     <input
                                         name={api}
                                         type="checkbox"
+                                        checked={defaultObjectValue(enabledCards, api)}
+                                        onChange={(event) => {toggleStatusAPI(event, enabledCards, api)}}
                                     />
                                 </label>
                             )
