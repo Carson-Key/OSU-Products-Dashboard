@@ -4,7 +4,6 @@ import { useCookies } from 'react-cookie';
 // Helpers
 import { APIs, AddURL } from '../../helpers/statusAPIObjects.js'
 import { defaultObjectValue } from '../../helpers/basic.js'
-import { useEffect } from 'react';
 
 const Add = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
