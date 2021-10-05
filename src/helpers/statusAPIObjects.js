@@ -1,7 +1,7 @@
 import None from './ExampleAPICalls/none.js'
 import Minor from './ExampleAPICalls/minor.js'
 
-const AddURL = 'add'
+export const AddURL = 'add'
 
 export const apiInitSummaryState = {
     status: {
@@ -11,6 +11,20 @@ export const apiInitSummaryState = {
         {
             name: "loading...",
             impact: "loading...",
+            incident_updates: []
+        }
+    ]
+}
+
+export const addAPISummaryState = {
+    status: {
+        indicator: AddURL,
+        description: "add"
+    },
+    incidents: [
+        {
+            name: "add",
+            impact: "add",
             incident_updates: []
         }
     ]
