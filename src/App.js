@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 // Components
 import Dashboard from './pages/Dashboard'
+import Add from './pages/Add'
 
 const App = () => {
 	return (
@@ -17,6 +18,9 @@ const App = () => {
 			</header>
 			<main className="h-screen my-10">
 				<Switch>
+					<Route path="/add">
+						<Add />
+					</Route>
 					<Route path="/">
 						<Dashboard />
 					</Route>
