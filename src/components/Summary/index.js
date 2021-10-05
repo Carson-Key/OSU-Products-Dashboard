@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 // Components
 import Status from '../Status'
-import StatusRender from '../StatusRender'
+import StatusBodyRender from '../StatusBodyRender'
 import Incidents from '../Incidents'
 import Loading from '../Loading'
 import StatusNone from '../StatusNone'
@@ -33,7 +33,7 @@ const Summary = (props) => {
 				color={statusColor} 
 				description={summary.status.description}
 			/>
-			<StatusRender 
+			<StatusBodyRender 
 				status={summary.status.indicator}
 				renderObject={{
 					"none": <StatusNone />,
