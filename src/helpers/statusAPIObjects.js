@@ -33,7 +33,7 @@ export const APIs = {
         name: "Zoom",
         link: 'https://status.zoom.us/api/v2/summary.json'
     },
-    Add: { 
+    AddAPI: { 
         name: "Add",
         link: AddURL
     }

@@ -17,7 +17,7 @@ const App = () => {
 					<Summary api={APIs.Kaltura} />
 					<Summary api={APIs.Instructure} />
 					<Summary api={APIs.Zoom} />
-					<Summary api={APIs.Add} />
+					<Summary api={APIs.AddAPI} />
 				</div>
 			</main>
 		</>
