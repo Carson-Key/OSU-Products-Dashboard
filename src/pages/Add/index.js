@@ -27,6 +27,7 @@ const Add = () => {
     }
     const saveNewConfig = () => {
         setApiCookie('APIs', enabledCards, { path: '/' })
+        history.push("/")
     }
 
 	return (
