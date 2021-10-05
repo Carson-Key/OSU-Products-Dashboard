@@ -1,3 +1,6 @@
+import None from './ExampleAPICalls/none.js'
+import Minor from './ExampleAPICalls/minor.js'
+
 export const apiInitSummaryState = {
     status: {
         description: "loading..."
@@ -28,4 +31,10 @@ export const APIs = {
         name: "Zoom",
         link: 'https://status.zoom.us/api/v2/summary.json'
     }
+}
+
+export const testStatus = {
+    0: None,
+    1: Minor,
+    5: apiInitSummaryState,
 }

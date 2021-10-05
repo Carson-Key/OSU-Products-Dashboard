@@ -1,7 +1,5 @@
 // Helpers
-import None from './ExampleAPICalls/none.js'
-import Minor from './ExampleAPICalls/minor.js'
-import { apiInitSummaryState } from './statusAPIObjects.js'
+import { testStatus } from './statusAPIObjects.js'
 import { APIs } from './statusAPICall.js'
 
 export const fetchJSON = (url, setState) => {
@@ -27,10 +25,4 @@ export const fetchJSON = (url, setState) => {
 
 export const testFetchJSON = (setState, status) => {
     setState(testStatus[status])
-}
-
-const testStatus = {
-    0: None,
-    1: Minor,
-    5: apiInitSummaryState,
 }
