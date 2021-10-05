@@ -1,11 +1,13 @@
 // Package
 import { useState } from 'react'
-import { useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie'
+import { useHistory } from "react-router-dom"
 // Helpers
 import { APIs, AddURL } from '../../helpers/statusAPIObjects.js'
 import { defaultObjectValue } from '../../helpers/basic.js'
 
 const Add = () => {
+    let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
     const defaultAPISArray = Object.keys(APIs)
@@ -50,6 +52,7 @@ const Add = () => {
                     })
                 }
                 <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
+                <button className="border-2 px-2" onClick={() => {history.push("/")}}>Back</button>
             </form>
         </div>
 	)

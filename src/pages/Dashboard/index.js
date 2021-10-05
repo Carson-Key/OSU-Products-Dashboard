@@ -7,7 +7,7 @@ import { APIs } from '../../helpers/statusAPIObjects.js'
 
 const Dashboard = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
-    const activeStatusCards = Object.keys(apiCookie.APIs)
+    const activeStatusCards = Object.keys(apiCookie.APIs ? apiCookie.APIs : {})
 
     // To stop compiler warning
     if (setApiCookie) {}
