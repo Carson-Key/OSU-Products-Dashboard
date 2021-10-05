@@ -7,7 +7,8 @@ import Incidents from '../Incidents'
 import Loading from '../Loading'
 import StatusNone from '../StatusNone'
 // Helpers
-import { fetchJSON, apiInitSummaryState } from '../../helpers/statusAPICall.js'
+import { apiInitSummaryState } from '../../helpers/statusAPIObjects'
+import { fetchJSON } from '../../helpers/statusAPICall.js'
 import { determineStatusBG, determineStatusBorder } from '../../helpers/className'
 
 const Summary = (props) => {

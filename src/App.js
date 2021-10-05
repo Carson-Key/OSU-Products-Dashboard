@@ -1,7 +1,7 @@
 // Components
 import Summary from './components/Summary'
 // Helpers
-import { APIs } from './helpers/statusAPICall.js'
+import { APIs } from './helpers/statusAPIObjects.js'
 
 const App = () => {
 	return (

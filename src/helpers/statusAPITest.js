@@ -1,9 +1,8 @@
 // Helpers
 import None from './ExampleAPICalls/none.js'
 import Minor from './ExampleAPICalls/minor.js'
-import { APIs, apiInitSummaryState as importAPIInitSummaryState } from './statusAPICall.js'
-
-export const apiInitSummaryState = {...importAPIInitSummaryState}
+import { apiInitSummaryState } from './statusAPIObjects.js'
+import { APIs } from './statusAPICall.js'
 
 export const fetchJSON = (url, setState) => {
     switch (url) {
