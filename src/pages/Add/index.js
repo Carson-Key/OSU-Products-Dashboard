@@ -15,13 +15,14 @@ const Add = () => {
     const [apiName, setAPIName] = useState("")
     const [apiLink, setAPILink] = useState("")
     const defaultAPISArray = Object.keys(excludedAPIs())
+    const addedAPISArray = Object.keys(apiCookie.addedAPIs)
 
-    const toggleStatusAPI = (event, api) => {
+    const toggleStatusAPI = (event, api, apiObjec) => {
         let newStateValue = {...enabledCards}
         if (newStateValue[api]) {
             delete newStateValue[api]
         } else {
-            newStateValue[api] = APIs[api]
+            newStateValue[api] = apiObjec[api]
         }
         
         setEnabledCards(newStateValue)
@@ -47,6 +48,7 @@ const Add = () => {
                         checkBoxArray={defaultAPISArray} 
                         enabledCheckBoxes={enabledCards} 
                         toggleStatus={toggleStatusAPI} 
+                        apiObject={APIs}
                     />
                 </section>
                 <section>
@@ -65,6 +67,14 @@ const Add = () => {
                     <button className="border-2 px-2" onClick={(event) => {
                         addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
                     }}>Add</button>
+                </section>
+                <section>
+                    <CheckBoxes 
+                        checkBoxArray={addedAPISArray} 
+                        enabledCheckBoxes={enabledCards} 
+                        toggleStatus={toggleStatusAPI} 
+                        apiObject={apiCookie.addedAPIs}
+                    />
                 </section>
                 <section>
                     <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
