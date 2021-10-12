@@ -1,14 +1,21 @@
 // Package
+import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 // Components
 import Summary from '../../components/Summary'
+// Helpers
+import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
+
 
 const Dashboard = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const activeStatusCards = Object.keys(apiCookie.APIs ? apiCookie.APIs : {})
 
-    // To stop compiler warning
-    if (setApiCookie) {}
+    useEffect(() => {
+        if (!apiCookie.APIs) {
+            setApiCookie('APIs', excludedAPIs(), { path: '/' })
+        }
+    }, [apiCookie, setApiCookie])
 
 	return (
         <div className="flex flex-wrap justify-evenly">

@@ -53,6 +53,21 @@ export const APIs = {
     }
 }
 
+const apisToExclude = {
+    AddAPI: true
+}
+
+export const excludedAPIs = () => {
+    const apisArray = Object.keys(APIs)
+    let includedAPIS = {}
+    apisArray.forEach((api) => {
+        if (!apisToExclude[api]) {
+            includedAPIS[api] = APIs[api]
+        }
+    })
+    return includedAPIS
+}
+
 export const testStatus = {
     0: None,
     1: Minor,
