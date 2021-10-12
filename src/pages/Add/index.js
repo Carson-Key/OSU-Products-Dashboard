@@ -15,7 +15,7 @@ const Add = () => {
     const [apiName, setAPIName] = useState("")
     const [apiLink, setAPILink] = useState("")
     const defaultAPISArray = Object.keys(excludedAPIs())
-    const addedAPISArray = Object.keys(apiCookie.addedAPIs)
+    const addedAPISArray = Object.keys(apiCookie.addedAPIs ? apiCookie.addedAPIs : {})
 
     const toggleStatusAPI = (event, api, apiObjec) => {
         let newStateValue = {...enabledCards}
