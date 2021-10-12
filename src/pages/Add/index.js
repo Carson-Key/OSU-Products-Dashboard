@@ -1,5 +1,5 @@
 // Package
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from "react-router-dom"
 // Components
@@ -34,6 +34,10 @@ const Add = () => {
     const setInputField = (event, setState) => {
         setState(event.target.value)
     }
+
+    useEffect(() => {
+        console.log(apiCookie.addedAPIs)
+    }, [apiCookie])
 
 	return (
         <div className="flex flex-wrap justify-evenly">

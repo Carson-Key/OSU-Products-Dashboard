@@ -26,21 +26,31 @@ const addHTTPS = (apiLink) => {
     }
 }
 
+const addStatPath = (link) => {
+    let checkForPath = new RegExp('/api/v2/summary.json')
+    if (checkForPath.test(link)) {
+        return link
+    } else {
+        return link + '/api/v2/summary.json'
+    }
+}
+
 const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
-    const link = addHTTPS(apiLink)
 
     setApiCookie('addedAPIs', {
         ...addedAPIs, 
         [beatifiedName]: {
             name: beatifiedName,
-            link: link
+            link: apiLink
         }
     }, { path: '/' })
 }
 
 export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
     event.preventDefault()
+    const link = addHTTPS(apiLink)
+    const statusAPILink = addStatPath(link)
     
     const onComplete = {
         checkIfLinkIsLive: {
@@ -57,13 +67,13 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
         },
         checkIfAddedAPICookieExsists: {
             onSuccess: () => {
-                setCookies(setApiCookie, apiName, apiLink, apiCookie.addedAPIs)
+                setCookies(setApiCookie, apiName, statusAPILink, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setCookies(setApiCookie, apiName, apiLink)
+                setCookies(setApiCookie, apiName, statusAPILink)
             }
         }
     }
 
-    checkIfLinkIsLive(apiLink, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
+    checkIfLinkIsLive(link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
 }
