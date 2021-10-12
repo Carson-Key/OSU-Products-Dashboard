@@ -1,12 +1,14 @@
 import { capitalizeFirstLetter } from './basic.js'
 
 const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
-    return fetch(apiLink).then(() => {
-        onSuccess()
+    return fetch(apiLink).then((response) => {
+        if (response.status === 200) {
+            onSuccess()
+        } else {
+            onFail()
+        }
     })
-    .catch((error) => {
-        onFail(error)
-    });
+    .catch((error) => {});
 }
 
 const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
@@ -60,7 +62,7 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
                     onComplete.checkIfAddedAPICookieExsists.onFail
                 )
             },
-            onFail: (error) => {
+            onFail: () => {
                 // Do nothing
             }
         },
