@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 import CheckBoxes from '../../components/CheckBoxes/index.js'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
-import { capitalizeFirstLetter } from '../../helpers/basic.js'
+import { addNewAPI } from '../../helpers/checkAddedLink.js'
 
 const Add = () => {
     let history = useHistory()
@@ -34,32 +34,6 @@ const Add = () => {
     const setInputField = (event, setState) => {
         setState(event.target.value)
     }
-    const addNewAPI = (event) => {
-        event.preventDefault()
-        const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
-        fetch(apiLink)
-            .then((response) => {
-                if (apiCookie.addedAPIs) {
-                    setApiCookie('AddedAPIs', {
-                        ...apiCookie.addedAPIs, 
-                        [beatifiedName]: {
-                            name: beatifiedName,
-                            link: apiLink
-                        }
-                    }, { path: '/' })
-                } else {
-                    setApiCookie('AddedAPIs', {
-                        [beatifiedName]: {
-                            name: beatifiedName,
-                            link: apiLink
-                        }
-                    }, { path: '/' })
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
 
 	return (
         <div className="flex flex-wrap justify-evenly">
@@ -84,7 +58,9 @@ const Add = () => {
                             setInputField(event, setAPILink)
                         }}/>
                     </label>
-                    <button className="border-2 px-2" onClick={addNewAPI}>Add</button>
+                    <button className="border-2 px-2" onClick={(event) => {
+                        addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
+                    }}>Add</button>
                 </section>
                 <section>
                     <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
