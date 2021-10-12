@@ -17,14 +17,24 @@ const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
     }
 }
 
+const addHTTPS = (apiLink) => {
+    let checkForHTPS = new RegExp('https://')
+    if (checkForHTPS.test(apiLink)) {
+        return apiLink
+    } else {
+        return 'https://' + apiLink
+    }
+}
+
 const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
+    const httpsLink = addHTTPS(apiLink)
 
     setApiCookie('addedAPIs', {
         ...addedAPIs, 
         [beatifiedName]: {
             name: beatifiedName,
-            link: apiLink
+            link: httpsLink
         }
     }, { path: '/' })
 }
