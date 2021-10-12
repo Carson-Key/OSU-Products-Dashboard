@@ -28,13 +28,13 @@ const addHTTPS = (apiLink) => {
 
 const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
-    const httpsLink = addHTTPS(apiLink)
+    const link = addHTTPS(apiLink)
 
     setApiCookie('addedAPIs', {
         ...addedAPIs, 
         [beatifiedName]: {
             name: beatifiedName,
-            link: httpsLink
+            link: link
         }
     }, { path: '/' })
 }
