@@ -2,8 +2,6 @@
 import { useCookies } from 'react-cookie';
 // Components
 import Summary from '../../components/Summary'
-// Helpers
-import { APIs } from '../../helpers/statusAPIObjects.js'
 
 const Dashboard = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
@@ -21,7 +19,8 @@ const Dashboard = () => {
                     )
                 })
             }
-            <Summary api={APIs.AddAPI} />
+            {/* Uncomment if you want to add back the Add Card */}
+            {/* <Summary api={APIs.AddAPI} /> */}
         </div>
 	)
 }
