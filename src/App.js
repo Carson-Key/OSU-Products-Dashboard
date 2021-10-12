@@ -15,7 +15,7 @@ const App = () => {
 		<Router>
 			<header className="flex justify-between w-screen h-16 my-auto bg-osuOrange">
 				<NavLink to="/" className="text-white mx-auto my-auto lg:ml-6 text-3xl">
-					Products Status
+					<h1>Products Status</h1>
 				</NavLink>
 				<NavLink to="/add" className="flex justify-center items-center h-full w-16">
 					<MdSettings className="text-white text-3xl" />
