@@ -11,11 +11,12 @@ const Add = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
+    const [apiName, setAPIName] = useState("")
+    const [apiLink, setAPILink] = useState("")
     const defaultAPISArray = Object.keys(excludedAPIs())
 
     const toggleStatusAPI = (event, api) => {
         let newStateValue = {...enabledCards}
-
         if (newStateValue[api]) {
             delete newStateValue[api]
         } else {
@@ -28,6 +29,9 @@ const Add = () => {
         event.preventDefault()
         setApiCookie('APIs', enabledCards, { path: '/' })
         history.push("/")
+    }
+    const setInputField = (event, setState) => {
+        setState(event.target.value)
     }
 
 	return (
@@ -43,12 +47,17 @@ const Add = () => {
                 <section>
                     <label>
                         Product Name:
-                        <input className="border-2" type="text" name="name" />
+                        <input className="border-2" type="text" name="name" onChange={(event) => {
+                            setInputField(event, setAPIName)
+                        }}/>
                     </label>
                     <label>
                         Product Status Page Link:
-                        <input className="border-2" type="text" name="link" />
+                        <input className="border-2" type="text" name="link" onChange={(event) => {
+                            setInputField(event, setAPILink)
+                        }}/>
                     </label>
+                    <button className="border-2 px-2" onClick={saveNewConfig}>Add</button>
                 </section>
                 <section>
                     <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
