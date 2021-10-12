@@ -3,14 +3,14 @@ import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from "react-router-dom"
 // Helpers
-import { APIs, AddURL } from '../../helpers/statusAPIObjects.js'
+import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { defaultObjectValue } from '../../helpers/basic.js'
 
 const Add = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
-    const defaultAPISArray = Object.keys(APIs)
+    const defaultAPISArray = Object.keys(excludedAPIs())
 
     const toggleStatusAPI = (event, api) => {
         let newStateValue = {...enabledCards}
@@ -33,21 +33,17 @@ const Add = () => {
             <form className="w-2/3 flex flex-wrap justify-evenly">
                 {
                     defaultAPISArray.map((api, i) => {
-                        if (APIs[api].link === AddURL) {
-                            return null
-                        } else {
-                            return (
-                                <label key={i} className="mx-4">
-                                    {api}
-                                    <input
-                                        name={api}
-                                        type="checkbox"
-                                        checked={defaultObjectValue(enabledCards, api)}
-                                        onChange={(event) => {toggleStatusAPI(event, api)}}
-                                    />
-                                </label>
-                            )
-                        }
+                        return (
+                            <label key={i} className="mx-4">
+                                {api}
+                                <input
+                                    name={api}
+                                    type="checkbox"
+                                    checked={defaultObjectValue(enabledCards, api)}
+                                    onChange={(event) => {toggleStatusAPI(event, api)}}
+                                />
+                            </label>
+                        )
                     })
                 }
                 <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
