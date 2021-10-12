@@ -33,11 +33,13 @@ const Add = () => {
 	return (
         <div className="flex flex-wrap justify-evenly">
             <form className="w-2/3 flex flex-wrap justify-evenly" onSubmit={saveNewConfig}>
-                <CheckBoxes 
-                    checkBoxArray={defaultAPISArray} 
-                    enabledCheckBoxes={enabledCards} 
-                    toggleStatus={toggleStatusAPI} 
-                />
+                <section>
+                    <CheckBoxes 
+                        checkBoxArray={defaultAPISArray} 
+                        enabledCheckBoxes={enabledCards} 
+                        toggleStatus={toggleStatusAPI} 
+                    />
+                </section>
                 <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
                 <button className="border-2 px-2" onClick={(event) => {
                     event.preventDefault()
