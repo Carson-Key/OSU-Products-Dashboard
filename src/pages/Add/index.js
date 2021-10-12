@@ -23,14 +23,15 @@ const Add = () => {
         
         setEnabledCards(newStateValue)
     }
-    const saveNewConfig = () => {
+    const saveNewConfig = (event) => {
+        event.preventDefault()
         setApiCookie('APIs', enabledCards, { path: '/' })
         history.push("/")
     }
 
 	return (
         <div className="flex flex-wrap justify-evenly">
-            <form className="w-2/3 flex flex-wrap justify-evenly">
+            <form className="w-2/3 flex flex-wrap justify-evenly" onSubmit={saveNewConfig}>
                 {
                     defaultAPISArray.map((api, i) => {
                         return (
@@ -47,7 +48,10 @@ const Add = () => {
                     })
                 }
                 <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
-                <button className="border-2 px-2" onClick={() => {history.push("/")}}>Back</button>
+                <button className="border-2 px-2" onClick={(event) => {
+                    event.preventDefault()
+                    history.push("/")
+                }}>Back</button>
             </form>
         </div>
 	)
