@@ -50,7 +50,7 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
                 setCookies(setApiCookie, apiName, apiLink, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setCookies(setApiCookie, apiName, apiLink, apiCookie)
+                setCookies(setApiCookie, apiName, apiLink)
             }
         }
     }
