@@ -5,3 +5,6 @@ export const defaultObjectValue = (object, value, defaultReturn = false) => {
         return defaultReturn
     }
 }
+export const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
