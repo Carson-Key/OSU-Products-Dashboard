@@ -1,11 +1,11 @@
 import { capitalizeFirstLetter } from './basic.js'
 
-const checkIfLinkIsLive = (apiLink, onSuccess) => {
+const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
     return fetch(apiLink).then(() => {
         onSuccess()
     })
     .catch((error) => {
-        console.error('Error:', error);
+        onFail(error)
     });
 }
 
@@ -29,6 +29,9 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
                     onComplete.checkIfAddedAPICookieExsists.onSuccess,
                     onComplete.checkIfAddedAPICookieExsists.onFail
                 )
+            },
+            onFail: (error) => {
+                
             }
         },
         checkIfAddedAPICookieExsists: {
@@ -52,5 +55,5 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
         }
     }
 
-    checkIfLinkIsLive(apiLink, onComplete.checkIfLinkIsLive.onSuccess)
+    checkIfLinkIsLive(apiLink, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
 }
