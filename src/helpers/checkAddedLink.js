@@ -31,7 +31,7 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
                 )
             },
             onFail: (error) => {
-                
+                // Do nothing
             }
         },
         checkIfAddedAPICookieExsists: {
