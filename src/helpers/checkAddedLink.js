@@ -17,10 +17,21 @@ const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
     }
 }
 
-export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
-    event.preventDefault()
+const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
 
+    setApiCookie('addedAPIs', {
+        ...addedAPIs, 
+        [beatifiedName]: {
+            name: beatifiedName,
+            link: apiLink
+        }
+    }, { path: '/' })
+}
+
+export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
+    event.preventDefault()
+    
     const onComplete = {
         checkIfLinkIsLive: {
             onSuccess: () => {
@@ -36,21 +47,10 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
         },
         checkIfAddedAPICookieExsists: {
             onSuccess: () => {
-                setApiCookie('AddedAPIs', {
-                    ...apiCookie.addedAPIs, 
-                    [beatifiedName]: {
-                        name: beatifiedName,
-                        link: apiLink
-                    }
-                }, { path: '/' })
+                setCookies(setApiCookie, apiName, apiLink, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setApiCookie('AddedAPIs', {
-                    [beatifiedName]: {
-                        name: beatifiedName,
-                        link: apiLink
-                    }
-                }, { path: '/' })
+                setCookies(setApiCookie, apiName, apiLink, apiCookie)
             }
         }
     }
