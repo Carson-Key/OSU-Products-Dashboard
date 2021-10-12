@@ -15,8 +15,6 @@ const Add = () => {
     const toggleStatusAPI = (event, api) => {
         let newStateValue = {...enabledCards}
 
-        console.log(newStateValue)
-
         if (newStateValue[api]) {
             delete newStateValue[api]
         } else {
