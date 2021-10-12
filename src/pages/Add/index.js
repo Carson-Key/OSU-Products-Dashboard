@@ -40,11 +40,23 @@ const Add = () => {
                         toggleStatus={toggleStatusAPI} 
                     />
                 </section>
-                <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
-                <button className="border-2 px-2" onClick={(event) => {
-                    event.preventDefault()
-                    history.push("/")
-                }}>Back</button>
+                <section>
+                    <label>
+                        Product Name:
+                        <input className="border-2" type="text" name="name" />
+                    </label>
+                    <label>
+                        Product Status Page Link:
+                        <input className="border-2" type="text" name="link" />
+                    </label>
+                </section>
+                <section>
+                    <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
+                    <button className="border-2 px-2" onClick={(event) => {
+                        event.preventDefault()
+                        history.push("/")
+                    }}>Back</button>
+                </section>
             </form>
         </div>
 	)
