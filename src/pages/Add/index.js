@@ -56,7 +56,7 @@ const Add = () => {
 
 	return (
         <div className="flex flex-wrap justify-evenly">
-            <form className="w-2/3 grid grid-cols-2 gap-2" onSubmit={saveNewConfig}>
+            <form className="w-2/3 grid grid-cols-2 gap-2">
                 <section className="grid grid-cols-1 border-2 row-span-2">
                     <div>
                         <h3>Default Products</h3>
