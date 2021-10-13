@@ -1,4 +1,5 @@
 import { capitalizeFirstLetter } from './basic.js'
+import { fireError } from './notificationHandling/notificationHelpers.js'
 
 const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
     return fetch(apiLink).then((response) => {
@@ -49,7 +50,7 @@ const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     }, { path: '/' })
 }
 
-export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
+export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
     event.preventDefault()
     const link = addStatPath(addHTTPS(apiLink))
     
@@ -63,7 +64,7 @@ export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie) => {
                 )
             },
             onFail: () => {
-                // Do nothing
+                fireError("This status page is either currently down, or not supported by this application", dispatch)
             }
         },
         checkIfAddedAPICookieExsists: {

@@ -1,5 +1,5 @@
 // Package
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from "react-router-dom"
 // Components
@@ -8,6 +8,8 @@ import Input from '../../components/Input'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/checkAddedLink.js'
+// Contexts
+import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js';
 
 const Add = () => {
     let history = useHistory()
@@ -17,6 +19,10 @@ const Add = () => {
     const [apiLink, setAPILink] = useState("")
     const defaultAPISArray = Object.keys(excludedAPIs())
     const addedAPISArray = Object.keys(apiCookie.addedAPIs ? apiCookie.addedAPIs : {})
+    const [notificationState, notificationDispatch] = useContext(NotificationContext)
+
+    // To satisfy the compiler warnings
+    if (notificationState) {}
 
     const toggleStatusAPI = (event, api, apiObjec) => {
         let newStateValue = {...enabledCards}
@@ -99,7 +105,7 @@ const Add = () => {
                         type="text"
                     />
                     <button className="border-2 px-2 w-20 mx-auto" onClick={(event) => {
-                        addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
+                        addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie,  notificationDispatch)
                     }}>Add</button>
                 </section>
                 <section className="flex flex-wrap justify-evenly border-2">

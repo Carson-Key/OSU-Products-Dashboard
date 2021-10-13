@@ -1,11 +1,12 @@
 import React, {createContext, useReducer} from "react";
 import NotificationReducer from './NotificationReducer.js';
+import { notificationTypes } from './notificationHelpers.js';
 
 const initialState = {
   notification: {
     occurs: false,
     message: "",
-    type: ""
+    type: notificationTypes.none
   }
 }
 
