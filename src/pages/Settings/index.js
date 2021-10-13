@@ -1,7 +1,7 @@
 // Package
 import { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 // Components
 import CheckBoxes from '../../components/CheckBoxes'
 import Input from '../../components/Input'
