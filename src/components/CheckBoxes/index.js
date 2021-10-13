@@ -9,6 +9,7 @@ const CheckBoxes = (props) => {
     return checkBoxArray.map((checkbox, i) => {
         return (
             <Input 
+                key={i}
                 onChange={(event) => {
                     toggleStatus(event, checkbox, apiObject)
                 }}
