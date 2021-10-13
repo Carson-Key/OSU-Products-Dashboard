@@ -1,7 +1,5 @@
 // Packages
-import {
-	BrowserRouter as Router
-  } from "react-router-dom"
+import {BrowserRouter as Router} from 'react-router-dom'
 // Components
 import Header from './components/Header'
 import PageRoutes from './components/PageRoutes'

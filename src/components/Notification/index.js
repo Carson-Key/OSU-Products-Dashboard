@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// Packages
+import { useEffect, useState } from 'react'
 
 const Notification = (props) => {
   const { message, type } = props

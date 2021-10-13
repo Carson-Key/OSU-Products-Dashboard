@@ -1,6 +1,6 @@
 // Packages
-import { NavLink } from "react-router-dom"
-import { MdSettings } from "react-icons/md"
+import { NavLink } from 'react-router-dom'
+import { MdSettings } from 'react-icons/md'
 
 const Header = () => {
 	return (

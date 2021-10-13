@@ -1,3 +1,4 @@
+// Helpers
 import { capitalizeFirstLetter } from './basic.js'
 import { fireError } from './notificationHandling/notificationHelpers.js'
 

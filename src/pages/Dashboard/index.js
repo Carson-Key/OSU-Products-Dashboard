@@ -1,6 +1,6 @@
 // Package
-import { useEffect } from 'react';
-import { useCookies } from 'react-cookie';
+import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
 // Components
 import Summary from '../../components/Summary'
 // Helpers

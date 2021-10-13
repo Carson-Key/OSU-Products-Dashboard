@@ -1,6 +1,8 @@
-import React, {createContext, useReducer} from "react";
-import NotificationReducer from './NotificationReducer.js';
-import { notificationTypes } from './notificationHelpers.js';
+// Packages
+import { createContext, useReducer } from 'react'
+// Helpers
+import NotificationReducer from './NotificationReducer.js'
+import { notificationTypes } from './notificationHelpers.js'
 
 const initialState = {
   notification: {

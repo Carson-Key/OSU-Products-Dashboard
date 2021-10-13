@@ -9,7 +9,7 @@ import Input from '../../components/Input'
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/checkAddedLink.js'
 // Contexts
-import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js';
+import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
 const Add = () => {
     let history = useHistory()

@@ -2,7 +2,7 @@
 import {
 	Switch,
 	Route
-  } from "react-router-dom"
+} from 'react-router-dom'
 // Components
 import Dashboard from '../../pages/Dashboard'
 import Add from '../../pages/Add'

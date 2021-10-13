@@ -1,5 +1,5 @@
 // Packages
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const AddStatusHead = (props) => {
 	const { name, color } = props

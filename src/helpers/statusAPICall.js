@@ -1,3 +1,4 @@
+// Objects
 import { AddURL, addAPISummaryState } from './statusAPIObjects'
 
 export const fetchJSON = (url, setState) => {

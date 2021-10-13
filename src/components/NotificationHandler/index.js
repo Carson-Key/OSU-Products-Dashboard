@@ -1,6 +1,9 @@
-import { useContext, Fragment } from 'react';
+// Packageds
+import { useContext, Fragment } from 'react'
+// Components
 import Notification from '../Notification'
-import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js';
+// Contexts
+import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
 const NoificationHandler = () => {
   const [state, dispatch] = useContext(NotificationContext)

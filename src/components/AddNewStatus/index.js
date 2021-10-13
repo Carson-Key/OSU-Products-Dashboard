@@ -1,6 +1,6 @@
 // Packages
-import { MdAddCircleOutline } from "react-icons/md"
-import { Link } from "react-router-dom"
+import { MdAddCircleOutline } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 const StatusNone = (props) => {
     return (

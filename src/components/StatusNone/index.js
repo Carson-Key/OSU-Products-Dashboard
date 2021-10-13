@@ -1,4 +1,5 @@
-import { FaRegCheckCircle } from "react-icons/fa";
+// Packages
+import { FaRegCheckCircle } from 'react-icons/fa'
 
 const StatusNone = (props) => {
     return (
