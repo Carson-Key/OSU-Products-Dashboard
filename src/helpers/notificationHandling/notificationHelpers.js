@@ -5,6 +5,7 @@ export const notificationTypes = {
 }
 
 export const fireError = (message, dispatch) => {
+    console.log("Error: " + message)
     dispatch({
         type: 'SET_NOTIFICATION', 
         payload: {occurs: true, message: message, 
