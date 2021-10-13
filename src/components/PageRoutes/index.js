@@ -11,7 +11,7 @@ import Settings from '../../pages/Settings'
 const PageRoutes = () => {
 	return (
         <Switch>
-            <Route path="/add/:toAdd">
+            <Route path="/add/:toAdd+*">
                 <Add />
             </Route>
             <Route path="/settings">
