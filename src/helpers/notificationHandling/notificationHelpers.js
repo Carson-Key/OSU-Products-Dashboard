@@ -10,9 +10,9 @@ export const fireError = (message, dispatch) => {
         payload: {occurs: true, message: message, 
         type: notificationTypes.error
     }})
-    // setTimeout(() => { 
-    //     dispatch({
-    //         type: 'SET_NOTIFICATION', 
-    //         payload: {occurs: false, message: "", type: notificationTypes.none}
-    // }) }, 5000)
+    setTimeout(() => { 
+        dispatch({
+            type: 'SET_NOTIFICATION', 
+            payload: {occurs: false, message: "", type: notificationTypes.none}
+    }) }, 5000)
 }
