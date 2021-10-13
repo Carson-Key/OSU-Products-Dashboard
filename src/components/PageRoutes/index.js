@@ -5,11 +5,15 @@ import {
 } from 'react-router-dom'
 // Components
 import Dashboard from '../../pages/Dashboard'
+import Add from '../../pages/Add'
 import Settings from '../../pages/Settings'
 
 const PageRoutes = () => {
 	return (
         <Switch>
+            <Route path="/add">
+                <Add />
+            </Route>
             <Route path="/settings">
                 <Settings />
             </Route>
