@@ -102,7 +102,7 @@ const Add = () => {
                         addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
                     }}>Add</button>
                 </section>
-                <section className="flex flex-wrap justify-between border-2 divide-x-2">
+                <section className="flex flex-wrap justify-evenly border-2">
                     {
                         addedAPISArray.map((api, i) => {
                             return (
