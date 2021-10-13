@@ -10,7 +10,7 @@ import Add from '../../pages/Add'
 const PageRoutes = () => {
 	return (
         <Switch>
-            <Route path="/add">
+            <Route path="/settings">
                 <Add />
             </Route>
             <Route path="/">
