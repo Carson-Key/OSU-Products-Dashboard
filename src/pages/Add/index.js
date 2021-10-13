@@ -102,19 +102,19 @@ const Add = () => {
                         addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
                     }}>Add</button>
                 </section>
-                <section className="grid grid-cols-1 border-2">
+                <section className="flex flex-wrap justify-between border-2 divide-x-2">
                     {
                         addedAPISArray.map((api, i) => {
                             return (
-                                <label key={i} className="grid grid-cols-1 w-24">
+                                <label key={i} className="grid grid-cols-1 w-24 font-semibold px-2 py-1">
                                     {api}
-                                    <button onClick={() => {deleteAddedAPI(api)}}>Remove</button>
+                                    <button className="text-white bg-red-500" onClick={() => {deleteAddedAPI(api)}}>Remove</button>
                                 </label>
                             )
                         })
                     }
                 </section>
-                <section className="col-span-2">
+                <section className="col-span-2 mx-auto my-10">
                     <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
                     <button className="border-2 px-2" onClick={(event) => {
                         event.preventDefault()
