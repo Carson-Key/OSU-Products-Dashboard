@@ -8,6 +8,7 @@ import Input from '../../components/Input'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/checkAddedLink.js'
+import { toggleStatusAPI as toggleStatus, saveNewConfig } from '../../helpers/addActive.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
@@ -25,14 +26,7 @@ const Settings = () => {
     if (notificationState) {}
 
     const toggleStatusAPI = (event, api, apiObjec) => {
-        let newStateValue = {...enabledCards}
-        if (newStateValue[api]) {
-            delete newStateValue[api]
-        } else {
-            newStateValue[api] = apiObjec[api]
-        }
-        
-        setEnabledCards(newStateValue)
+        toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
     }
     const deleteAddedAPI = (api) => {
         let newAddedAPIsCookie = {...apiCookie.addedAPIs}
@@ -50,11 +44,6 @@ const Settings = () => {
             }
             setApiCookie('APIs', newAPIs, { path: '/' })
         }
-    }
-    const saveNewConfig = (event) => {
-        event.preventDefault()
-        setApiCookie('APIs', enabledCards, { path: '/' })
-        history.push("/")
     }
     const setInputField = (event, setState) => {
         setState(event.target.value)
@@ -122,7 +111,11 @@ const Settings = () => {
                     }
                 </section>
                 <section className="col-span-2 mx-auto my-10">
-                    <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
+                    <button className="border-2 px-2" onClick={(event) => {
+                        event.preventDefault()
+                        saveNewConfig(enabledCards, setApiCookie)
+                        history.push("/")
+                    }}>Save</button>
                     <button className="border-2 px-2" onClick={(event) => {
                         event.preventDefault()
                         history.push("/")
