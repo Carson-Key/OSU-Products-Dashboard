@@ -1,5 +1,7 @@
 // Packages
 import { useEffect, useState } from 'react'
+// Helpers
+import { notificationTypes } from '../../helpers/notificationHandling/notificationHelpers.js'
 
 const Notification = (props) => {
   const { message, type } = props
@@ -7,7 +9,7 @@ const Notification = (props) => {
 
   useEffect(() => {
     const determineBGColor = () => {
-      if (type === "error") {
+      if (type === notificationTypes.error) {
         setBackgroundColor("bg-red-400 ")
       } else {
         setBackgroundColor("bg-indigo-300 ")
