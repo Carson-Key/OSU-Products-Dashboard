@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from "react-router-dom"
 // Components
-import CheckBoxes from '../../components/CheckBoxes/index.js'
+import CheckBoxes from '../../components/CheckBoxes'
+import Input from '../../components/Input'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/checkAddedLink.js'
@@ -77,18 +78,26 @@ const Add = () => {
                     </div>
                 </section>
                 <section className="grid grid-cols-1 border-2">
-                    <label className="w-full">
-                        Product Name:
-                        <input className="border-2" type="text" name="name" onChange={(event) => {
+                    <Input 
+                        onChange={(event) => {
                             setInputField(event, setAPIName)
-                        }}/>
-                    </label>
-                    <label className="w-full">
-                        Product Status Page Link:
-                        <input className="border-2" type="text" name="link" onChange={(event) => {
+                        }}
+                        labelClass="w-full"
+                        inputClass="border-2"
+                        name="name"
+                        labelText="Product Name:"
+                        type="text"
+                    />
+                    <Input 
+                        onChange={(event) => {
                             setInputField(event, setAPILink)
-                        }}/>
-                    </label>
+                        }}
+                        labelClass="w-full"
+                        inputClass="border-2"
+                        name="link"
+                        labelText="Product Status Page Link:"
+                        type="text"
+                    />
                     <button className="border-2 px-2 w-20 mx-auto" onClick={(event) => {
                         addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
                     }}>Add</button>
