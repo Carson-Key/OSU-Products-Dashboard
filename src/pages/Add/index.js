@@ -39,7 +39,7 @@ const Add = () => {
 	return (
         <div className="flex flex-wrap justify-evenly">
             <form className="w-2/3 grid grid-cols-2 gap-2" onSubmit={saveNewConfig}>
-                <section className="grid grid-cols-1">
+                <section className="grid grid-cols-1 border-2 row-span-2">
                     <div>
                         <h3>Default Products</h3>
                         <CheckBoxes 
@@ -59,7 +59,7 @@ const Add = () => {
                         />
                     </div>
                 </section>
-                <section className="grid grid-cols-1">
+                <section className="grid grid-cols-1 border-2">
                     <label className="w-full">
                         Product Name:
                         <input className="border-2" type="text" name="name" onChange={(event) => {
@@ -75,6 +75,18 @@ const Add = () => {
                     <button className="border-2 px-2 w-20 mx-auto" onClick={(event) => {
                         addNewAPI(event, apiName, apiLink, apiCookie, setApiCookie)
                     }}>Add</button>
+                </section>
+                <section className="grid grid-cols-1 border-2">
+                    {
+                        addedAPISArray.map((api, i) => {
+                            return (
+                                <label key={i} className="grid grid-cols-1 w-24">
+                                    {api}
+                                    <button>Remove</button>
+                                </label>
+                            )
+                        })
+                    }
                 </section>
                 <section className="col-span-2">
                     <button className="border-2 px-2" onClick={saveNewConfig}>Save</button>
