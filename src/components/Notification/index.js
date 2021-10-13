@@ -20,11 +20,14 @@ const Notification = (props) => {
   }, [type])
 
   return (
-    <div className={
-      backgroundColor + 
-      "absolute self-center w-25pr top-0 left-0 text-white mx-1 mt-2pr rounded mx-40pr w-20pr p-2"
-    }>
-      <p>{message}</p>
+    <div className=
+      "absolute top-6 left-0 w-screen"
+    >
+      <p className={
+        backgroundColor + "mx-auto self-center w-1/3 text-white mt-2pr rounded p-2"
+      }>
+        {message}
+      </p>
     </div>
   )
 }
