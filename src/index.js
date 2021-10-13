@@ -4,11 +4,14 @@ import './Assets/css/tailwind.css';
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { CookiesProvider } from 'react-cookie';
+import NotificationStore from './helpers/notificationHandling/NotificationContext.js';
 
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
-      <App />
+      <NotificationStore>
+        <App />
+      </NotificationStore>
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
