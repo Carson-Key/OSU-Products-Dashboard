@@ -27,6 +27,23 @@ const Add = () => {
         
         setEnabledCards(newStateValue)
     }
+    const deleteAddedAPI = (api) => {
+        let newAddedAPIsCookie = {...apiCookie.addedAPIs}
+        if (newAddedAPIsCookie[api]) {
+            delete newAddedAPIsCookie[api]
+            setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
+        }
+        if (apiCookie.APIs[api]) {
+            let newAPIs = {...apiCookie.APIs}
+            delete newAPIs[api]
+            if (enabledCards[api]) {
+                let newStateValue = {...enabledCards}
+                delete newStateValue[api]
+                setEnabledCards(newStateValue)
+            }
+            setApiCookie('APIs', newAPIs, { path: '/' })
+        }
+    }
     const saveNewConfig = (event) => {
         event.preventDefault()
         setApiCookie('APIs', enabledCards, { path: '/' })
@@ -82,7 +99,7 @@ const Add = () => {
                             return (
                                 <label key={i} className="grid grid-cols-1 w-24">
                                     {api}
-                                    <button>Remove</button>
+                                    <button onClick={() => {deleteAddedAPI(api)}}>Remove</button>
                                 </label>
                             )
                         })
