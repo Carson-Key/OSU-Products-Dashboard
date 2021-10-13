@@ -5,13 +5,13 @@ import {
 } from 'react-router-dom'
 // Components
 import Dashboard from '../../pages/Dashboard'
-import Add from '../../pages/Add'
+import Settings from '../../pages/Settings'
 
 const PageRoutes = () => {
 	return (
         <Switch>
             <Route path="/settings">
-                <Add />
+                <Settings />
             </Route>
             <Route path="/">
                 <Dashboard />

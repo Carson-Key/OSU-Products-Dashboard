@@ -11,7 +11,7 @@ import { addNewAPI } from '../../helpers/checkAddedLink.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
-const Add = () => {
+const Settings = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
@@ -132,4 +132,4 @@ const Add = () => {
 	)
 }
 
-export default Add
+export default Settings
