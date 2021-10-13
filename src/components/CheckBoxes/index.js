@@ -1,3 +1,6 @@
+// Components
+import Input from '../Input'
+// Helpers
 import { defaultObjectValue } from '../../helpers/basic.js'
 
 const CheckBoxes = (props) => {
@@ -5,15 +8,16 @@ const CheckBoxes = (props) => {
 
     return checkBoxArray.map((checkbox, i) => {
         return (
-            <label key={i} className="mx-4">
-                {checkbox}
-                <input
-                    name={checkbox}
-                    type="checkbox"
-                    checked={defaultObjectValue(enabledCheckBoxes, checkbox)}
-                    onChange={(event) => {toggleStatus(event, checkbox, apiObject)}}
-                />
-            </label>
+            <Input 
+                onChange={(event) => {
+                    toggleStatus(event, checkbox, apiObject)
+                }}
+                labelClass="mx-4"
+                name={checkbox}
+                labelText={checkbox}
+                checked={defaultObjectValue(enabledCheckBoxes, checkbox)}
+                type="checkbox"
+            />
         )
     })
 }
