@@ -10,7 +10,9 @@ const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
             onFail()
         }
     })
-    .catch((error) => {});
+    .catch((error) => {
+        onFail()
+    });
 }
 
 const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
@@ -51,8 +53,7 @@ const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
     }, { path: '/' })
 }
 
-export const addNewAPI = (event, apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
-    event.preventDefault()
+export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
     const link = addStatPath(addHTTPS(apiLink))
     
     const onComplete = {
