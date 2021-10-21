@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 // Components
 import Loading from '../../components/Loading'
 // Helpers
-import { addMultipleAPI } from '../../helpers/checkAddedLink.js'
+import { addNewAPI } from '../../helpers/checkAddedLink.js'
 import { capitalizeFirstLetter } from '../../helpers/basic.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
@@ -31,7 +31,7 @@ const Add = () => {
             const link = toAddSplit[i+1].split("=")[1]
             apis.push({name, link})
         }
-        addMultipleAPI(apis, apiCookie, setApiCookie, notificationDispatch)
+        addNewAPI(apis, apiCookie, setApiCookie, notificationDispatch)
     }, [apiCookie, notificationDispatch, setApiCookie, params])
     useEffect(() => {
         let doneLoading = 0

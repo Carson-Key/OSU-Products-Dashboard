@@ -90,40 +90,11 @@ async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCoo
     }))
 }
 
-export async function addMultipleAPI(apis, apiCookie, setApiCookie, dispatch) {
+export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
     let addedAPIs = {}
     let cookieFriendlyAPIs = {}
 
     await generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
     setCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
-}
-
-export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
-    const apiObject = generateAPIObject(apiName, apiLink)
-    
-    const onComplete = {
-        checkIfLinkIsLive: {
-            onSuccess: () => {
-                checkIfAddedAPICookieExsists(
-                    apiCookie, 
-                    onComplete.checkIfAddedAPICookieExsists.onSuccess,
-                    onComplete.checkIfAddedAPICookieExsists.onFail
-                )
-            },
-            onFail: () => {
-                fireError("This status page is either currently down, or not supported by this application", dispatch)
-            }
-        },
-        checkIfAddedAPICookieExsists: {
-            onSuccess: () => {
-                setCookies(setApiCookie, apiObject, apiCookie.APIs, apiCookie.addedAPIs)
-            },
-            onFail: () => {
-                setCookies(setApiCookie, apiObject, apiCookie.APIs)
-            }
-        }
-    }
-
-    checkIfLinkIsLive(apiObject.link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
 }

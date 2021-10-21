@@ -99,7 +99,7 @@ const Settings = () => {
                     />
                     <button className="border-2 px-2 w-20 mx-auto" onClick={(event) => {
                         event.preventDefault()
-                        addNewAPI(apiName, apiLink, apiCookie, setApiCookie,  notificationDispatch)
+                        addNewAPI([{name: apiName, link: apiLink}], apiCookie, setApiCookie,  notificationDispatch)
                     }}>Add</button>
                 </section>
                 <section className="flex flex-wrap justify-evenly border-2">
