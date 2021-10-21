@@ -50,14 +50,12 @@ const generateAPIObject = (apiName, apiLink) => {
     const name = capitalizeFirstLetter(apiName.toLowerCase())
     const link = addStatPath(addHTTPS(apiLink))
 
-    return {
-        [name]: { name, link }
-    }
+    return { name, link }
 }
 
 async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
     await Promise.all(apis.map(async (api, i) => {
-        const link = addStatPath(addHTTPS(api.link))
+        const apiObject = generateAPIObject(api.name, api.link)
     
         const onComplete = {
             checkIfLinkIsLive: {
@@ -74,19 +72,21 @@ async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCoo
             },
             checkIfAddedAPICookieExsists: {
                 onSuccess: () => {
-                    let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
-                    cookieFriendlyAPIs[name] = {name, link}
+                    cookieFriendlyAPIs[apiObject.name] = apiObject
                     addedAPIs = apiCookie.addedAPIs
                 },
                 onFail: () => {
-                    let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
-                    cookieFriendlyAPIs[name] = {name, link}
+                    cookieFriendlyAPIs[apiObject.name] = apiObject
                     addedAPIs = {}
                 }
             }
         }
 
-        await checkIfLinkIsLive(link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
+        await checkIfLinkIsLive(
+            apiObject.link, 
+            onComplete.checkIfLinkIsLive.onSuccess, 
+            onComplete.checkIfLinkIsLive.onFail
+        )
     }))
 }
 
