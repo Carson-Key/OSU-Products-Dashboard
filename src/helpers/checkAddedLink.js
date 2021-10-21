@@ -42,22 +42,11 @@ const addStatPath = (link) => {
 }
 
 const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
-    setApiCookie('addedAPIs', {
-        ...addedAPIs, 
-        ...apiObject
-    }, { path: '/' })
-
-    setApiCookie('APIs', {
-        ...activeAPIs, 
-        ...apiObject
-    }, { path: '/' })
+    setApiCookie('addedAPIs', { ...addedAPIs, ...apiObject }, { path: '/' })
+    setApiCookie('APIs', { ...activeAPIs, ...apiObject }, { path: '/' })
 }
 const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
-    setApiCookie('addedAPIs', {
-        ...addedAPIs, 
-        ...apis
-    }, { path: '/' })
-
+    setApiCookie('addedAPIs', { ...addedAPIs, ...apis }, { path: '/' })
     setApiCookie('APIs', {...activeAPIs, ...apis}, { path: '/' })
 }
 
