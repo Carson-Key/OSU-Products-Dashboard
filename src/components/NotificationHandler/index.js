@@ -1,5 +1,5 @@
 // Packageds
-import { useContext, Fragment } from 'react'
+import { useContext } from 'react'
 // Components
 import Notification from '../Notification'
 // Contexts
@@ -14,11 +14,14 @@ const NoificationHandler = () => {
 	switch (state.notification.occurs) {
 		case true:
 			return (
-				<Notification message={state.notification.message} type={state.notification.type} />
+				<Notification
+					message={state.notification.message} 
+					type={state.notification.type} 
+				/>
 			)
 		default:
 			return (
-				<Fragment></Fragment>
+				<></>
 			)
 	}
 }
