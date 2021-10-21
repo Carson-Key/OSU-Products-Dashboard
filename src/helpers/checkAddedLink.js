@@ -59,10 +59,7 @@ const setMultipleCookies = (setApiCookie, apis, addedAPIs = {}) => {
     }, { path: '/' })
 }
 
-export const addMultipleAPI = (apis, apiCookie, setApiCookie, dispatch)  => {
-    let addedAPIs = {}
-    let cookieFriendlyAPIs = {}
-    let promise
+const generateMutiAPIObject = (addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) => {
     apis.forEach((api, i) => {
         const link = addStatPath(addHTTPS(api.link))
     
@@ -95,7 +92,13 @@ export const addMultipleAPI = (apis, apiCookie, setApiCookie, dispatch)  => {
 
         checkIfLinkIsLive(link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
     })
+}
 
+export const addMultipleAPI = (apis, apiCookie, setApiCookie, dispatch)  => {
+    let addedAPIs = {}
+    let cookieFriendlyAPIs = {}
+
+    generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
     setMultipleCookies(setApiCookie, cookieFriendlyAPIs, addedAPIs)
 }
