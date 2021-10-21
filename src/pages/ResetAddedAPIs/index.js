@@ -6,15 +6,25 @@ import { useHistory } from 'react-router-dom'
 const ResetActiveAPIs = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie, removeCookie] = useCookies(['APIs'])
-
-    // To please the compiler
-    if (apiCookie) {}
-    if (setApiCookie) {}
     
     useEffect(() => {
+        let newActiveAPIs = {}
+        let activeAPIsArray = []
+
+        if (apiCookie.APIs) {
+            newActiveAPIs = {...apiCookie.APIs}
+        }
+        if (apiCookie.addedAPIs) {
+            activeAPIsArray = Object.keys(apiCookie.addedAPIs)
+        }
+        
+        activeAPIsArray.forEach((api) => {
+            delete newActiveAPIs[api]
+        })
+        setApiCookie('APIs', newActiveAPIs, { path: '/' })
         removeCookie('addedAPIs')
         history.push("/")
-    }, [history, removeCookie])
+    }, [history, removeCookie, apiCookie, setApiCookie])
 
 	return (
         <></>

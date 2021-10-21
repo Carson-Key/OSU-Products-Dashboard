@@ -26,8 +26,8 @@ const PageRoutes = () => {
                 <ResetAddedAPIs />
             </Route>
             <Route path="/reset_all_api_cookies">
-                <ResetActiveAPIs />
                 <ResetAddedAPIs />
+                <ResetActiveAPIs />
             </Route>
             <Route path="/">
                 <Dashboard />
