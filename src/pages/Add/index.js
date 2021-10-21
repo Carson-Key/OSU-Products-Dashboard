@@ -8,6 +8,7 @@ import Loading from '../../components/Loading'
 // Helpers
 import { addNewAPI } from '../../helpers/addAPI.js'
 import { capitalizeFirstLetter } from '../../helpers/basic.js'
+import { generateAPIsObjectFromParams } from '../../helpers/apiParsers.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
@@ -22,15 +23,8 @@ const Add = () => {
     if (notificationState) {}
 
     useEffect(() => {
-        const fullToAdd = params.toAdd + params[0]
-        const toAddSplit = fullToAdd.split(",")
-        let apis = []
-        setParsedLink(toAddSplit)
-        for (let i = 0; i < toAddSplit.length; i+=2) {
-            const name = toAddSplit[i].split("=")[1]
-            const link = toAddSplit[i+1].split("=")[1]
-            apis.push({name, link})
-        }
+        const apis = generateAPIsObjectFromParams(params)
+        setParsedLink(apis)
         addNewAPI(apis, apiCookie, setApiCookie, notificationDispatch)
     }, [apiCookie, notificationDispatch, setApiCookie, params])
     useEffect(() => {
