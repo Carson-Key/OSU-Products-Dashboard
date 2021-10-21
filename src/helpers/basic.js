@@ -1,9 +1,9 @@
 const defaultReturns = {
-    "none": 0,
-    "minor": 1,
-    "major": 2,
-    "critical": 3,
-    "other": -1
+    none: 0,
+    minor: 1,
+    major: 2,
+    critical: 3,
+    other: -1
 }
 
 export const defaultObjectValue = (object, value, defaultReturn = false) => {
@@ -18,5 +18,5 @@ export const capitalizeFirstLetter = (string) => {
 }
 
 export const defaultKeyValue = (status, returnValues = defaultReturns) => {
-    return returnValues[status] ? returnValues[status] : returnValues["other"]
+    return returnValues[status] ? returnValues[status] : returnValues.other
 }
