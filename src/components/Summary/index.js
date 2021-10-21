@@ -10,7 +10,7 @@ import AddNewStatus from '../AddNewStatus'
 import AddStatusHead from '../AddStatusHead'
 // Helpers
 import { apiInitSummaryState } from '../../helpers/statusAPIObjects'
-import { fetchJSON } from '../../helpers/statusAPICall.js'
+import { fetchJSON } from '../../helpers/statusAPITest.js'
 import { determineStatusBG, determineStatusBorder } from '../../helpers/className'
 
 const Summary = (props) => {
