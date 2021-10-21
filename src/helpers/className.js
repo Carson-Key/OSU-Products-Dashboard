@@ -1,5 +1,5 @@
 // Helpers
-import { parseStatus } from './parseSatus.js'
+import { defaultKeyValue } from './basic.js'
 import { notificationTypes } from './notificationHandling/notificationHelpers.js'
 
 const notificationBGColors = {
@@ -23,12 +23,12 @@ const borderColors = {
 }
 
 export const determineNotificationBGColor = (type) => {
-    return parseStatus(type, notificationBGColors)
+    return defaultKeyValue(type, notificationBGColors)
 }
 
 export const determineStatusBorder = (status) => {
-    return parseStatus(status, borderColors)
+    return defaultKeyValue(status, borderColors)
 }
 export const determineStatusBG = (status) => {
-    return parseStatus(status, classColors)
+    return defaultKeyValue(status, classColors)
 }
