@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 // Components
 import Loading from '../../components/Loading'
 // Helpers
-import { addNewAPI } from '../../helpers/checkAddedLink.js'
+import { addNewAPI } from '../../helpers/addAPI.js'
 import { capitalizeFirstLetter } from '../../helpers/basic.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'

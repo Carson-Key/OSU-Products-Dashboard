@@ -7,7 +7,7 @@ import CheckBoxes from '../../components/CheckBoxes'
 import Input from '../../components/Input'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
-import { addNewAPI } from '../../helpers/checkAddedLink.js'
+import { addNewAPI } from '../../helpers/addAPI.js'
 import { toggleStatusAPI as toggleStatus, saveNewConfig } from '../../helpers/addActive.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
