@@ -53,7 +53,7 @@ const generateAPIObject = (apiName, apiLink) => {
     return { name, link }
 }
 
-async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
+async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
     await Promise.all(apis.map(async (api, i) => {
         const apiObject = generateAPIObject(api.name, api.link)
     
@@ -94,7 +94,7 @@ export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
     let addedAPIs = {}
     let cookieFriendlyAPIs = {}
 
-    await generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
+    await checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
     setCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
 }
