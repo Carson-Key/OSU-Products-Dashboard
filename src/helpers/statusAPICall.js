@@ -1,17 +1,21 @@
+// Helpers
+import { defaultKeyValue } from './basic.js'
 // Objects
 import { AddURL, addAPISummaryState } from './statusAPIObjects'
 
 export const fetchJSON = (url, setState) => {
-    switch (url) {
-        case AddURL:
+    const fetchPaths = {
+        [AddURL]: () => {
             setState(addAPISummaryState)
-            break
-        default:
+        },
+        other: () => {
             fetch(url)
-                .then((response) => response.json())
-                .then((json) => {
-                    setState(json)
-                })
-            break
+            .then((response) => response.json())
+            .then((json) => {
+                setState(json)
+            })
+        }
     }
+
+    defaultKeyValue(url, fetchPaths)()
 }
