@@ -47,13 +47,11 @@ const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
 }
 
 const generateAPIObject = (apiName, apiLink) => {
-    const beautifiedName = capitalizeFirstLetter(apiName.toLowerCase())
+    const name = capitalizeFirstLetter(apiName.toLowerCase())
+    const link = addStatPath(addHTTPS(apiLink))
 
     return {
-        [beautifiedName]: {
-            name: beautifiedName,
-            link: apiLink
-        }
+        [name]: { name, link }
     }
 }
 
@@ -102,8 +100,7 @@ export async function addMultipleAPI(apis, apiCookie, setApiCookie, dispatch) {
 }
 
 export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
-    const link = addStatPath(addHTTPS(apiLink))
-    const apiObject = generateAPIObject(apiName, link)
+    const apiObject = generateAPIObject(apiName, apiLink)
     
     const onComplete = {
         checkIfLinkIsLive: {
@@ -128,5 +125,5 @@ export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) =
         }
     }
 
-    checkIfLinkIsLive(link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
+    checkIfLinkIsLive(apiObject.link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
 }
