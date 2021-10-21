@@ -8,7 +8,7 @@ const defaultTestSate = {
     [APIs.Kaltura.link]: 0,
     [APIs.Instructure.link]: 0,
     [APIs.Zoom.link]: 0,
-    other: 0,
+    other: 3,
 }
 
 const testFetchJSON = (setState, status) => {

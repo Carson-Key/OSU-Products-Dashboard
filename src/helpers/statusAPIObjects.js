@@ -1,6 +1,8 @@
 // Example API Returns
 import None from './ExampleAPICalls/none.js'
 import Minor from './ExampleAPICalls/minor.js'
+import Major from './ExampleAPICalls/major.js'
+import Critical from './ExampleAPICalls/critical.js'
 
 export const AddURL = 'add'
 
@@ -72,5 +74,7 @@ export const excludedAPIs = () => {
 export const testStatus = {
     0: None,
     1: Minor,
-    5: apiInitSummaryState,
+    2: Major,
+    3: Critical,
+    4: apiInitSummaryState,
 }

@@ -1,4 +1,4 @@
-const minor = {
+const critical = {
     "page": {
         "id": "nlxv32btr6v7",
         "name": "Instructure",
@@ -119,4 +119,4 @@ const minor = {
     }
 }
 
-export default minor
+export default critical
