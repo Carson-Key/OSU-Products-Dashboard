@@ -7,19 +7,19 @@ const notificationBGColors = {
     other: "bg-indigo-300 "
 }
 
-const classColors = {
-    "none": "bg-green-400",
-    "minor": "bg-yellow-400",
-    "major": "bg-red-500",
-    "critical": "bg-red-900",
-    "other": "bg-gray-400"
+const statusBGColors = {
+    none: "bg-green-400",
+    minor: "bg-yellow-400",
+    major: "bg-red-500",
+    critical: "bg-red-900",
+    other: "bg-gray-400"
 }
-const borderColors = {
-    "none": "border-2 border-green-400",
-    "minor": "border-2 border-yellow-400",
-    "major": "border-2 border-red-500",
-    "critical": "border-2 border-red-900",
-    "other": "border-2 border-gray-400"
+const statusBorderColors = {
+    none: "border-2 border-green-400",
+    minor: "border-2 border-yellow-400",
+    major: "border-2 border-red-500",
+    critical: "border-2 border-red-900",
+    other: "border-2 border-gray-400"
 }
 
 export const determineNotificationBGColor = (type) => {
@@ -27,8 +27,8 @@ export const determineNotificationBGColor = (type) => {
 }
 
 export const determineStatusBorder = (status) => {
-    return defaultKeyValue(status, borderColors)
+    return defaultKeyValue(status, statusBorderColors)
 }
 export const determineStatusBG = (status) => {
-    return defaultKeyValue(status, classColors)
+    return defaultKeyValue(status, statusBGColors)
 }
