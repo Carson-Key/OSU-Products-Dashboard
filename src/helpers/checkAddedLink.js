@@ -58,7 +58,7 @@ const setCookies = (setApiCookie, apiName, apiLink, activeAPIs, addedAPIs = {}) 
             name: beatifiedName,
             link: apiLink
         }
-}   , { path: '/' })
+    }, { path: '/' })
 }
 const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
     setApiCookie('addedAPIs', {
@@ -134,7 +134,7 @@ export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) =
                 setCookies(setApiCookie, apiName, link, apiCookie.APIs, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setCookies(setApiCookie, apiName, apiCookie.APIs, link)
+                setCookies(setApiCookie, apiName, link, apiCookie.APIs)
             }
         }
     }

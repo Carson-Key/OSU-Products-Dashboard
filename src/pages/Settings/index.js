@@ -51,6 +51,7 @@ const Settings = () => {
 
     useEffect(() => {
         setEnabledCards({...apiCookie.APIs})
+        console.log(apiCookie)
     }, [apiCookie])
 
 	return (
