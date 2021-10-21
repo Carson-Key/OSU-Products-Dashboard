@@ -45,10 +45,6 @@ const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
     setApiCookie('addedAPIs', { ...addedAPIs, ...apiObject }, { path: '/' })
     setApiCookie('APIs', { ...activeAPIs, ...apiObject }, { path: '/' })
 }
-const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
-    setApiCookie('addedAPIs', { ...addedAPIs, ...apis }, { path: '/' })
-    setApiCookie('APIs', {...activeAPIs, ...apis}, { path: '/' })
-}
 
 const generateAPIObject = (apiName, apiLink) => {
     const beautifiedName = capitalizeFirstLetter(apiName.toLowerCase())
@@ -102,7 +98,7 @@ export async function addMultipleAPI(apis, apiCookie, setApiCookie, dispatch) {
 
     await generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
-    setMultipleCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
+    setCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
 }
 
 export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
