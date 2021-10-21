@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 // Components
 import Loading from '../../components/Loading'
 // Helpers
-import { addNewAPI, addMultipleAPI } from '../../helpers/checkAddedLink.js'
+import { addMultipleAPI } from '../../helpers/checkAddedLink.js'
 import { capitalizeFirstLetter } from '../../helpers/basic.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
@@ -37,13 +37,12 @@ const Add = () => {
         let doneLoading = 0
         for (let i = 0; i < pasrsedLink.length; i+=2) {
             const name = pasrsedLink[i].split("=")[1]
-            console.log(apiCookie.addedAPIs)
-            // if (apiCookie.addedAPIs[capitalizeFirstLetter(name)]) {
-            //     doneLoading++
-            // }
+            if (apiCookie.addedAPIs[capitalizeFirstLetter(name)]) {
+                doneLoading++
+            }
         }
         if (doneLoading === pasrsedLink.length) {
-            // history.push("/")
+            history.push("/")
         }
     }, [apiCookie])
 
