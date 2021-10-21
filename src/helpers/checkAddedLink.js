@@ -7,11 +7,11 @@ const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
         if (response.status === 200) {
             onSuccess()
         } else {
-            onFail()
+            onFail("This status page is either currently down, or not supported by this application")
         }
     })
     .catch((error) => {
-        onFail()
+        onFail(error)
     });
 }
 
@@ -82,8 +82,8 @@ async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCoo
                         onComplete.checkIfAddedAPICookieExsists.onFail
                     )
                 },
-                onFail: () => {
-                    fireError("This status page is either currently down, or not supported by this application", dispatch)
+                onFail: (message) => {
+                    fireError(message, dispatch)
                 }
             },
             checkIfAddedAPICookieExsists: {
