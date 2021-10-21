@@ -1,27 +1,7 @@
 // Helpers
 import { capitalizeFirstLetter } from './basic.js'
+import { checkIfLinkIsLive, checkIfAddedAPICookieExsists } from './validateAPI.js'
 import { fireError } from './notificationHandling/notificationHelpers.js'
-
-const checkIfLinkIsLive = (apiLink, onSuccess, onFail) => {
-    return fetch(apiLink).then((response) => {
-        if (response.status === 200) {
-            onSuccess()
-        } else {
-            onFail("This status page is either currently down, or not supported by this application")
-        }
-    })
-    .catch((error) => {
-        onFail(error)
-    });
-}
-
-const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
-    if (apiCookie.addedAPIs) {
-        onSuccess()
-    } else {
-        onFail()
-    }
-}
 
 const addHTTPS = (apiLink) => {
     let checkForHTPS = new RegExp('https://')
