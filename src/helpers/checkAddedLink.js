@@ -52,6 +52,53 @@ const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
         }
     }, { path: '/' })
 }
+const setMultipleCookies = (setApiCookie, apis, addedAPIs = {}) => {
+    setApiCookie('addedAPIs', {
+        ...addedAPIs, 
+        ...apis
+    }, { path: '/' })
+}
+
+export const addMultipleAPI = (apis, apiCookie, setApiCookie, dispatch)  => {
+    let addedAPIs = {}
+    let cookieFriendlyAPIs = {}
+    let promise
+    apis.forEach((api, i) => {
+        const link = addStatPath(addHTTPS(api.link))
+    
+        const onComplete = {
+            checkIfLinkIsLive: {
+                onSuccess: () => {
+                    checkIfAddedAPICookieExsists(
+                        apiCookie, 
+                        onComplete.checkIfAddedAPICookieExsists.onSuccess,
+                        onComplete.checkIfAddedAPICookieExsists.onFail
+                    )
+                },
+                onFail: () => {
+                    fireError("This status page is either currently down, or not supported by this application", dispatch)
+                }
+            },
+            checkIfAddedAPICookieExsists: {
+                onSuccess: () => {
+                    let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
+                    cookieFriendlyAPIs[name] = {name, link: api.link}
+                    addedAPIs = apiCookie.addedAPIs
+                },
+                onFail: () => {
+                    let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
+                    cookieFriendlyAPIs[name] = {name, link: api.link}
+                    addedAPIs = {}
+                }
+            }
+        }
+
+        checkIfLinkIsLive(link, onComplete.checkIfLinkIsLive.onSuccess, onComplete.checkIfLinkIsLive.onFail)
+    })
+
+
+    setMultipleCookies(setApiCookie, cookieFriendlyAPIs, addedAPIs)
+}
 
 export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
     const link = addStatPath(addHTTPS(apiLink))
