@@ -41,23 +41,15 @@ const addStatPath = (link) => {
     }
 }
 
-const setCookies = (setApiCookie, apiName, apiLink, activeAPIs, addedAPIs = {}) => {
-    const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
-
+const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
     setApiCookie('addedAPIs', {
         ...addedAPIs, 
-        [beatifiedName]: {
-            name: beatifiedName,
-            link: apiLink
-        }
+        ...apiObject
     }, { path: '/' })
 
     setApiCookie('APIs', {
         ...activeAPIs, 
-        [beatifiedName]: {
-            name: beatifiedName,
-            link: apiLink
-        }
+        ...apiObject
     }, { path: '/' })
 }
 const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
@@ -67,6 +59,17 @@ const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
     }, { path: '/' })
 
     setApiCookie('APIs', {...activeAPIs, ...apis}, { path: '/' })
+}
+
+const generateAPIObject = (apiName, apiLink) => {
+    const beautifiedName = capitalizeFirstLetter(apiName.toLowerCase())
+
+    return {
+        [beautifiedName]: {
+            name: beautifiedName,
+            link: apiLink
+        }
+    }
 }
 
 async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
@@ -115,6 +118,7 @@ export async function addMultipleAPI(apis, apiCookie, setApiCookie, dispatch) {
 
 export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
     const link = addStatPath(addHTTPS(apiLink))
+    const apiObject = generateAPIObject(apiName, link)
     
     const onComplete = {
         checkIfLinkIsLive: {
@@ -131,10 +135,10 @@ export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) =
         },
         checkIfAddedAPICookieExsists: {
             onSuccess: () => {
-                setCookies(setApiCookie, apiName, link, apiCookie.APIs, apiCookie.addedAPIs)
+                setCookies(setApiCookie, apiObject, apiCookie.APIs, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setCookies(setApiCookie, apiName, link, apiCookie.APIs)
+                setCookies(setApiCookie, apiObject, apiCookie.APIs)
             }
         }
     }
