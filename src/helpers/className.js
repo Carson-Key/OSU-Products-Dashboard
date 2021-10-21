@@ -1,5 +1,11 @@
 // Helpers
 import { parseStatus } from './parseSatus.js'
+import { notificationTypes } from './notificationHandling/notificationHelpers.js'
+
+const notificationBGColors = {
+    [notificationTypes.error]: "bg-red-400 ",
+    other: "bg-indigo-300 "
+}
 
 const classColors = {
     "none": "bg-green-400",
@@ -14,6 +20,10 @@ const borderColors = {
     "major": "border-2 border-red-500",
     "critical": "border-2 border-red-900",
     "other": "border-2 border-gray-400"
+}
+
+export const determineNotificationBGColor = (type) => {
+    return parseStatus(type, notificationBGColors)
 }
 
 export const determineStatusBorder = (status) => {

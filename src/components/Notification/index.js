@@ -1,23 +1,14 @@
 // Packages
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 // Helpers
-import { notificationTypes } from '../../helpers/notificationHandling/notificationHelpers.js'
+import { determineNotificationBGColor } from '../../helpers/className.js'
 
 const Notification = (props) => {
   const { message, type } = props
-  const [backgroundColor, setBackgroundColor] = useState("bg-indigo-300")
+  const [backgroundColor, setBackgroundColor] = useState(determineNotificationBGColor(type))
 
-  useEffect(() => {
-    const determineBGColor = () => {
-      if (type === notificationTypes.error) {
-        setBackgroundColor("bg-red-400 ")
-      } else {
-        setBackgroundColor("bg-indigo-300 ")
-      }
-    }
-
-    determineBGColor()
-  }, [type])
+  // To please the compiler
+  if (setBackgroundColor) {}
 
   return (
     <div className=
