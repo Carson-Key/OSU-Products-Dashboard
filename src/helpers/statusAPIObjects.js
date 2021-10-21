@@ -72,9 +72,9 @@ export const excludedAPIs = () => {
 }
 
 export const testStatus = {
-    0: None,
-    1: Minor,
-    2: Major,
-    3: Critical,
-    4: apiInitSummaryState,
+    1: None,
+    2: Minor,
+    3: Major,
+    4: Critical,
+    5: apiInitSummaryState,
 }

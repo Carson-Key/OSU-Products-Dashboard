@@ -4,10 +4,10 @@ import { defaultKeyValue } from './basic.js'
 import { APIs, testStatus } from './statusAPIObjects.js'
 
 const defaultTestSate = {
-    [APIs.Box.link]: 0,
-    [APIs.Kaltura.link]: 0,
-    [APIs.Instructure.link]: 0,
-    [APIs.Zoom.link]: 0,
+    [APIs.Box.link]: 1,
+    [APIs.Kaltura.link]: 1,
+    [APIs.Instructure.link]: 1,
+    [APIs.Zoom.link]: 1,
     other: 3,
 }
 
