@@ -1,5 +1,5 @@
 // Package
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
 // Components
@@ -48,6 +48,10 @@ const Settings = () => {
     const setInputField = (event, setState) => {
         setState(event.target.value)
     }
+
+    useEffect(() => {
+        setEnabledCards({...apiCookie.APIs})
+    }, [apiCookie])
 
 	return (
         <div className="flex flex-wrap justify-evenly">

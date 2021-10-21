@@ -41,7 +41,7 @@ const addStatPath = (link) => {
     }
 }
 
-const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
+const setCookies = (setApiCookie, apiName, apiLink, activeAPIs, addedAPIs = {}) => {
     const beatifiedName = capitalizeFirstLetter(apiName.toLowerCase())
 
     setApiCookie('addedAPIs', {
@@ -51,12 +51,22 @@ const setCookies = (setApiCookie, apiName, apiLink, addedAPIs = {}) => {
             link: apiLink
         }
     }, { path: '/' })
+
+    setApiCookie('APIs', {
+        ...activeAPIs, 
+        [beatifiedName]: {
+            name: beatifiedName,
+            link: apiLink
+        }
+}   , { path: '/' })
 }
-const setMultipleCookies = (setApiCookie, apis, addedAPIs = {}) => {
+const setMultipleCookies = (setApiCookie, apis, activeAPIs, addedAPIs = {}) => {
     setApiCookie('addedAPIs', {
         ...addedAPIs, 
         ...apis
     }, { path: '/' })
+
+    setApiCookie('APIs', {...activeAPIs, ...apis}, { path: '/' })
 }
 
 async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
@@ -100,7 +110,7 @@ export async function addMultipleAPI(apis, apiCookie, setApiCookie, dispatch) {
 
     await generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
-    setMultipleCookies(setApiCookie, cookieFriendlyAPIs, addedAPIs)
+    setMultipleCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
 }
 
 export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) => {
@@ -121,10 +131,10 @@ export const addNewAPI = (apiName, apiLink, apiCookie, setApiCookie, dispatch) =
         },
         checkIfAddedAPICookieExsists: {
             onSuccess: () => {
-                setCookies(setApiCookie, apiName, link, apiCookie.addedAPIs)
+                setCookies(setApiCookie, apiName, link, apiCookie.APIs, apiCookie.addedAPIs)
             },
             onFail: () => {
-                setCookies(setApiCookie, apiName, link)
+                setCookies(setApiCookie, apiName, apiCookie.APIs, link)
             }
         }
     }
