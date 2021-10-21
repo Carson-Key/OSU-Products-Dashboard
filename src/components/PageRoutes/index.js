@@ -1,8 +1,5 @@
 // Packages
-import {
-	Switch,
-	Route
-} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 // Pages
 import Dashboard from '../../pages/Dashboard'
 import Add from '../../pages/Add'

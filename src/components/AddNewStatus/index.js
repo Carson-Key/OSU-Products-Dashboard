@@ -2,7 +2,7 @@
 import { MdAddCircleOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
-const StatusNone = (props) => {
+const StatusNone = () => {
     return (
         <Link to="/add">
             <div className="flex justify-center items-center h-60">
