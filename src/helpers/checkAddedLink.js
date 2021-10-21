@@ -79,12 +79,12 @@ async function generateMutiAPIObject(addedAPIs, cookieFriendlyAPIs, apis, apiCoo
             checkIfAddedAPICookieExsists: {
                 onSuccess: () => {
                     let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
-                    cookieFriendlyAPIs[name] = {name, link: api.link}
+                    cookieFriendlyAPIs[name] = {name, link}
                     addedAPIs = apiCookie.addedAPIs
                 },
                 onFail: () => {
                     let name = capitalizeFirstLetter(apis[i].name.toLowerCase())
-                    cookieFriendlyAPIs[name] = {name, link: api.link}
+                    cookieFriendlyAPIs[name] = {name, link}
                     addedAPIs = {}
                 }
             }
