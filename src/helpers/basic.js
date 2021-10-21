@@ -14,7 +14,7 @@ export const defaultObjectValue = (object, value, defaultReturn = false) => {
     }
 }
 export const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
 
 export const defaultKeyValue = (status, returnValues = defaultReturns) => {
