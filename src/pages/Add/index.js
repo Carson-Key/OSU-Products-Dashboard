@@ -32,7 +32,7 @@ const Add = () => {
             apis.push({name, link})
         }
         addMultipleAPI(apis, apiCookie, setApiCookie, notificationDispatch)
-    }, [])
+    }, [apiCookie, notificationDispatch, setApiCookie, params])
     useEffect(() => {
         let doneLoading = 0
         for (let i = 0; i < pasrsedLink.length; i+=2) {
@@ -44,7 +44,7 @@ const Add = () => {
         if (doneLoading === pasrsedLink.length) {
             history.push("/")
         }
-    }, [apiCookie])
+    }, [apiCookie, history, pasrsedLink])
 
 	return (
         <Loading />
