@@ -24,13 +24,16 @@ const deleteFromAdded = (newAddedAPIsCookie, api, setApiCookie) => {
     delete newAddedAPIsCookie[api]
     setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
 }
+const deleteFromActiveState = (api, enabledCards, setEnabledCards) => {
+    let newStateValue = {...enabledCards}
+    delete newStateValue[api]
+    setEnabledCards(newStateValue)
+}
 const deleteAddedAPIFromActive = (apis, api, enabledCards, setEnabledCards, setApiCookie) => {
     let newAPIs = {...apis}
     delete newAPIs[api]
     checkIfAPIExsists(enabledCards, api, () => {
-        let newStateValue = {...enabledCards}
-        delete newStateValue[api]
-        setEnabledCards(newStateValue)
+        deleteFromActiveState(api, enabledCards, setEnabledCards)
     }, () => {})
     setApiCookie('APIs', newAPIs, { path: '/' })
 }
