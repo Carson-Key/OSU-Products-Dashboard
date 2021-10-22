@@ -9,6 +9,11 @@ const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
     setApiCookie('APIs', { ...activeAPIs, ...apiObject }, { path: '/' })
 }
 
+const setDefaultAPICookies = (setApiCookie, apiCookie) => {
+    setApiCookie('exsistingUser', true, { path: '/' })
+    setApiCookie('APIs', {...apiCookie.APIs, ...excludedAPIs()}, { path: '/' })
+}
+
 async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
     await Promise.all(apis.map(async (api, i) => {
         const apiObject = generateAPIObject(api.name, api.link)
@@ -48,8 +53,7 @@ async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, d
 
 export const addDefaultAPIs = (apiCookie, setApiCookie) => {
     checkIfNewUser(apiCookie.exsistingUser, () => {
-        setApiCookie('exsistingUser', true, { path: '/' })
-        setApiCookie('APIs', {...apiCookie.APIs, ...excludedAPIs()}, { path: '/' })
+        setDefaultAPICookies(setApiCookie, apiCookie)
     }, () => {})
 }
 
