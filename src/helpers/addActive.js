@@ -13,8 +13,8 @@ export const saveNewConfig = (enabledCards, setApiCookie) => {
     setApiCookie('APIs', enabledCards, { path: '/' })
 }
 
-const checkIfAPIAdded = (newAddedAPIsCookie, api, onSuccess, onFail) => {
-    if (newAddedAPIsCookie[api]) {
+const checkIfAPIAdded = (addedAPIs, api, onSuccess, onFail) => {
+    if (addedAPIs[api]) {
         onSuccess()
     } else {
         onFail()
