@@ -1,3 +1,7 @@
+// Helpers
+import { addDefaultAPIs } from "./addAPI"
+import { excludedAPIs } from "./statusAPIObjects"
+
 const generateActiveAPIs = (apis) => {
     if (apis) {
         return {...apis}
@@ -18,9 +22,15 @@ const deleteActiveAddedAPIs = (addedAPIsArray, activeAPIs) => {
     })
 }
 
-export const removeActiveCookies = (removeCookie) => {
+export async function removeActiveCookies(removeCookie, setApiCookie) {
+    const defaultAPICookie = {
+        exsistingUser: false,
+        APIs: excludedAPIs()
+    }
+
     removeCookie('APIs')
     removeCookie('exsistingUser')
+    addDefaultAPIs(defaultAPICookie, setApiCookie)
 }
 
 export const removeAddedCookies = (apiCookie, setApiCookie, removeCookie) => {

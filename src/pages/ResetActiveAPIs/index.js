@@ -14,9 +14,9 @@ const ResetActiveAPIs = () => {
     if (setApiCookie) {}
     
     useEffect(() => {
-        removeActiveCookies(removeCookie)
+        removeActiveCookies(removeCookie, setApiCookie)
         history.push("/")
-    }, [history, removeCookie])
+    }, [history, removeCookie, setApiCookie])
 
 	return (
         <></>
