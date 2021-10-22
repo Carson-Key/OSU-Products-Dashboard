@@ -27,13 +27,16 @@ const checkIfAPIActive = (activeAPIs, api, onSuccess, onFail) => {
         onFail()
     }
 }
+const deleteFromAdded = (newAddedAPIsCookie, api, setApiCookie) => {
+    delete newAddedAPIsCookie[api]
+    setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
+}
 
 export const deleteAdded = (apiCookie, api, setApiCookie, enabledCards, setEnabledCards) => {
     let newAddedAPIsCookie = {...apiCookie.addedAPIs}
 
     checkIfAPIAdded(newAddedAPIsCookie, api, () => {
-        delete newAddedAPIsCookie[api]
-        setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
+        deleteFromAdded(newAddedAPIsCookie, api, setApiCookie)
     }, () => {})
     checkIfAPIActive(apiCookie.APIs, api, () => {
         let newAPIs = {...apiCookie.APIs}
