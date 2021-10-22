@@ -13,12 +13,22 @@ export const saveNewConfig = (enabledCards, setApiCookie) => {
     setApiCookie('APIs', enabledCards, { path: '/' })
 }
 
+const checkIfAPIAdded = (newAddedAPIsCookie, api, onSuccess, onFail) => {
+    if (newAddedAPIsCookie[api]) {
+        onSuccess()
+    } else {
+        onFail()
+    }
+}
+
 export const deleteAdded = (apiCookie, api, setApiCookie, enabledCards, setEnabledCards) => {
     let newAddedAPIsCookie = {...apiCookie.addedAPIs}
-    if (newAddedAPIsCookie[api]) {
+
+    checkIfAPIAdded(newAddedAPIsCookie, api, () => {
         delete newAddedAPIsCookie[api]
         setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
-    }
+    }, () => {})
+
     if (apiCookie.APIs[api]) {
         let newAPIs = {...apiCookie.APIs}
         delete newAPIs[api]
