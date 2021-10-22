@@ -8,7 +8,7 @@ import Input from '../../components/Input'
 // Helpers
 import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/addAPI.js'
-import { toggleStatusAPI as toggleStatus, saveNewConfig } from '../../helpers/addActive.js'
+import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
@@ -29,21 +29,7 @@ const Settings = () => {
         toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
     }
     const deleteAddedAPI = (api) => {
-        let newAddedAPIsCookie = {...apiCookie.addedAPIs}
-        if (newAddedAPIsCookie[api]) {
-            delete newAddedAPIsCookie[api]
-            setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
-        }
-        if (apiCookie.APIs[api]) {
-            let newAPIs = {...apiCookie.APIs}
-            delete newAPIs[api]
-            if (enabledCards[api]) {
-                let newStateValue = {...enabledCards}
-                delete newStateValue[api]
-                setEnabledCards(newStateValue)
-            }
-            setApiCookie('APIs', newAPIs, { path: '/' })
-        }
+        deleteAdded(apiCookie, api, setApiCookie, enabledCards, setEnabledCards)
     }
     const setInputField = (event, setState) => {
         setState(event.target.value)
