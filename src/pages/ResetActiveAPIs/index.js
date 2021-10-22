@@ -13,6 +13,7 @@ const ResetActiveAPIs = () => {
     
     useEffect(() => {
         removeCookie('APIs')
+        removeCookie('exsistingUser')
         history.push("/")
     }, [history, removeCookie])
 
