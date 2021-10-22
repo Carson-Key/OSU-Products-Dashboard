@@ -1,22 +1,28 @@
+const generateActiveAPIs = (apis) => {
+    if (apis) {
+        return {...apis}
+    } else {
+        return {}
+    }
+}
+
 export const removeActiveCookies = (removeCookie) => {
     removeCookie('APIs')
     removeCookie('exsistingUser')
 }
 
 export const removeAddedCookies = (apiCookie, setApiCookie, removeCookie) => {
-    let newActiveAPIs = {}
+    let activeAPIs = generateActiveAPIs(apiCookie.APIs)
     let activeAPIsArray = []
 
-    if (apiCookie.APIs) {
-        newActiveAPIs = {...apiCookie.APIs}
-    }
+    
     if (apiCookie.addedAPIs) {
         activeAPIsArray = Object.keys(apiCookie.addedAPIs)
     }
     
     activeAPIsArray.forEach((api) => {
-        delete newActiveAPIs[api]
+        delete activeAPIs[api]
     })
-    setApiCookie('APIs', newActiveAPIs, { path: '/' })
+    setApiCookie('APIs', activeAPIs, { path: '/' })
     removeCookie('addedAPIs')
 }
