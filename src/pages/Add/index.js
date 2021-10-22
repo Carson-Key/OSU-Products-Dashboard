@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import Loading from '../../components/Loading'
 // Helpers
 import { addNewAPI } from '../../helpers/addAPI.js'
-import { capitalizeFirstLetter } from '../../helpers/basic.js'
+import { loadToHomePage, determineIfAddRouteFinished } from '../../helpers/loading.js'
 import { generateAPIsObjectFromParams } from '../../helpers/apiParsers.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
@@ -28,16 +28,9 @@ const Add = () => {
         addNewAPI(apis, apiCookie, setApiCookie, notificationDispatch)
     }, [apiCookie, notificationDispatch, setApiCookie, params])
     useEffect(() => {
-        let doneLoading = 0
-        for (let i = 0; i < pasrsedLink.length; i+=2) {
-            const name = pasrsedLink[i].split("=")[1]
-            if (apiCookie.addedAPIs[capitalizeFirstLetter(name)]) {
-                doneLoading++
-            }
-        }
-        if (doneLoading === pasrsedLink.length) {
-            history.push("/")
-        }
+        loadToHomePage((doneLoading) => {
+            determineIfAddRouteFinished(pasrsedLink, apiCookie.addedAPIs, doneLoading)
+        }, pasrsedLink.length, history)
     }, [apiCookie, history, pasrsedLink])
 
 	return (
