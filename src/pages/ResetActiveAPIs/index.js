@@ -11,7 +11,6 @@ const ResetActiveAPIs = () => {
 
     // To please the compiler
     if (apiCookie) {}
-    if (setApiCookie) {}
     
     useEffect(() => {
         removeActiveCookies(removeCookie, setApiCookie)
