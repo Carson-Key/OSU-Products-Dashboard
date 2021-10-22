@@ -18,3 +18,11 @@ export const checkIfAddedAPICookieExsists = (apiCookie, onSuccess, onFail) => {
         onFail()
     }
 }
+
+export const checkIfNewUser = (exsistingUserCookie, onSuccess, onFail) => {
+    if (!exsistingUserCookie) {
+        onSuccess()
+    } else {
+        onFail()
+    }
+}

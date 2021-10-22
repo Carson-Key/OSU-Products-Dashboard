@@ -1,5 +1,5 @@
 // Helpers
-import { checkIfLinkIsLive, checkIfAddedAPICookieExsists } from './validateAPI.js'
+import { checkIfLinkIsLive, checkIfAddedAPICookieExsists, checkIfNewUser } from './validateAPI.js'
 import { generateAPIObject } from './apiParsers.js'
 import { fireError } from './notificationHandling/notificationHelpers.js'
 import { excludedAPIs } from './statusAPIObjects.js'
@@ -44,14 +44,6 @@ async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, d
             onComplete.checkIfLinkIsLive.onFail
         )
     }))
-}
-
-const checkIfNewUser = (exsistingUserCookie, onSuccess, onFail) => {
-    if (!exsistingUserCookie) {
-        onSuccess()
-    } else {
-        onFail()
-    }
 }
 
 export const addDefaultAPIs = (apiCookie, setApiCookie) => {
