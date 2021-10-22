@@ -2,6 +2,8 @@
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
+// Helpers
+import { removeActiveCookies } from '../../helpers/removeCookies'
 
 const ResetActiveAPIs = () => {
     let history = useHistory()
@@ -12,8 +14,7 @@ const ResetActiveAPIs = () => {
     if (setApiCookie) {}
     
     useEffect(() => {
-        removeCookie('APIs')
-        removeCookie('exsistingUser')
+        removeActiveCookies(removeCookie)
         history.push("/")
     }, [history, removeCookie])
 
