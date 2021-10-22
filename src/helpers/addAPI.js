@@ -52,9 +52,14 @@ async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, d
 }
 
 export const addDefaultAPIs = (apiCookie, setApiCookie) => {
+    let returnedAPIs = apiCookie.APIs
+
     checkIfNewUser(apiCookie.exsistingUser, () => {
         setDefaultAPICookies(setApiCookie, apiCookie)
+        returnedAPIs = excludedAPIs()
     }, () => {})
+
+    return returnedAPIs
 }
 
 export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
@@ -63,5 +68,7 @@ export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
 
     await checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
-    setCookies(setApiCookie, cookieFriendlyAPIs, apiCookie.APIs, addedAPIs)
+    const currentAPIs = addDefaultAPIs(apiCookie, setApiCookie)
+    console.log(currentAPIs)
+    setCookies(setApiCookie, cookieFriendlyAPIs, currentAPIs, addedAPIs)
 }
