@@ -1,3 +1,6 @@
+// Helpers
+import { checkIfAPIExsists } from "./validateAPI"
+
 export const toggleStatusAPI = (api, apiObjec, enabledCards, setEnabledCards) => {
     let newStateValue = {...enabledCards}
     
@@ -13,13 +16,6 @@ export const saveNewConfig = (enabledCards, setApiCookie) => {
     setApiCookie('APIs', enabledCards, { path: '/' })
 }
 
-const checkIfAPIExsists = (apis, api, onSuccess, onFail) => {
-    if (apis[api]) {
-        onSuccess()
-    } else {
-        onFail()
-    }
-}
 const deleteFromAdded = (newAddedAPIsCookie, api, setApiCookie) => {
     delete newAddedAPIsCookie[api]
     setApiCookie('addedAPIs', newAddedAPIsCookie, { path: '/' })
