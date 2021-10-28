@@ -11,6 +11,7 @@ let COOKIEFRIENDLYAPIS = {}
 const setCookies = (setApiCookie, activeAPIs) => {
     setApiCookie('addedAPIs', { ...ADDEDAPIS, ...COOKIEFRIENDLYAPIS }, { path: '/' })
     setApiCookie('APIs', { ...activeAPIs, ...COOKIEFRIENDLYAPIS }, { path: '/' })
+    COOKIEFRIENDLYAPIS = {}
 }
 
 const setDefaultAPICookies = (setApiCookie, apiCookie) => {
