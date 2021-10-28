@@ -1,5 +1,6 @@
 // Package
 import { useContext } from 'react'
+import { useCookies } from 'react-cookie'
 // Helpers
 import { deleteAdded } from '../helpers/addActive'
 import { deactivatePopUp } from '../helpers/popUpHandling/popUpHelpers'
@@ -7,13 +8,8 @@ import { deactivatePopUp } from '../helpers/popUpHandling/popUpHelpers'
 import { PopUpContext } from '../helpers/popUpHandling/PopUpContext'
 
 const RemoveAPIPopUp = (props) => {
-    const {
-        apiCookie, 
-        api, 
-        setApiCookie, 
-        enabledCards, 
-        setEnabledCards 
-    } = props
+    const { api, enabledCards, setEnabledCards } = props
+    const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [popUpState, popUpDispatch] = useContext(PopUpContext)
 
     // To satisfy the compiler warnings

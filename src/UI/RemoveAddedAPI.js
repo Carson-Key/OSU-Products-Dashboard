@@ -16,13 +16,12 @@ const RemoveAddedAPI = (props) => {
 
     // To satisfy the compiler warnings
     if (popUpState) {}
+    if (setApiCookie) {}
 
     const deleteAddedAPI = (api) => {
         activatePopUp((
             <RemoveAPIPopUp
-                apiCookie={apiCookie}
                 api={api}
-                setApiCookie={setApiCookie}
                 enabledCards={enabledCards}
                 setEnabledCards={setEnabledCards}
             />
