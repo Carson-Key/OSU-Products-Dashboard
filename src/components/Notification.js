@@ -1,7 +1,7 @@
 // Packages
 import { useState } from 'react'
 // Helpers
-import { determineNotificationBGColor } from '../helpers/className.js'
+import { determineNotificationBGColor } from '../helpers/className'
 
 const Notification = (props) => {
   const { message, type } = props

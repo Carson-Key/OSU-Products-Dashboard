@@ -1,7 +1,7 @@
 // Helpers
-import { defaultKeyValue } from './basic.js'
+import { defaultKeyValue } from './basic'
 // Objects
-import { APIs, testStatus } from './statusAPIObjects.js'
+import { APIs, testStatus } from './statusAPIObjects'
 
 const defaultTestSate = {
     [APIs.Box.link]: 1,

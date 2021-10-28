@@ -1,6 +1,6 @@
 // Helpers
-import { checkIfAPIExsists } from "./validateAPI"
-import { deleteAddedAPIFromActive, deleteFromAdded } from "./deleteAPIs"
+import { checkIfAPIExsists } from './validateAPI'
+import { deleteAddedAPIFromActive, deleteFromAdded } from './deleteAPIs'
 
 export const toggleStatusAPI = (api, apiObjec, enabledCards, setEnabledCards) => {
     let newStateValue = {...enabledCards}

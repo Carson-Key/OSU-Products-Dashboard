@@ -3,7 +3,6 @@ import { useCookies } from 'react-cookie'
 // Components
 import Summary from '../components/Summary'
 
-
 const Dashboard = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const activeStatusCards = Object.keys(apiCookie.APIs ? apiCookie.APIs : {})

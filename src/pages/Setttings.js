@@ -7,7 +7,7 @@ import ActivateSection from '../UI/ActivateSection'
 import AddAPI from '../UI/AddAPI'
 import RemoveAddedAPI from '../UI/RemoveAddedAPI'
 // Helpers
-import { saveNewConfig } from '../helpers/addActive.js'
+import { saveNewConfig } from '../helpers/addActive'
 
 const Settings = () => {
     let history = useHistory()

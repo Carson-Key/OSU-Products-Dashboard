@@ -4,9 +4,9 @@ import { useCookies } from 'react-cookie'
 // Components
 import Input from '../components/Input'
 // Helper
-import { addNewAPI } from '../helpers/addAPI.js'
+import { addNewAPI } from '../helpers/addAPI'
 // Contexts
-import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
+import { NotificationContext } from '../helpers/notificationHandling/NotificationContext'
 
 const AddAPI = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])

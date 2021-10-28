@@ -1,4 +1,5 @@
-import { capitalizeFirstLetter } from './basic.js'
+// Helpers
+import { capitalizeFirstLetter } from './basic'
 
 export const determineIfAddRouteFinished = (pasrsedLink, addedAPIs, doneLoading)=> {
     for (let i = 0; i < pasrsedLink.length; i+=2) {

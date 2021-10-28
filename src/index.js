@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './Assets/css/tailwind.css';
+import './Assets/css/tailwind.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { CookiesProvider } from 'react-cookie';
-import NotificationStore from './helpers/notificationHandling/NotificationContext.js';
+import { CookiesProvider } from 'react-cookie'
+import NotificationStore from './helpers/notificationHandling/NotificationContext'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,7 +15,7 @@ ReactDOM.render(
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

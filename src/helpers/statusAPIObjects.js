@@ -1,8 +1,8 @@
 // Example API Returns
-import None from './ExampleAPICalls/none.js'
-import Minor from './ExampleAPICalls/minor.js'
-import Major from './ExampleAPICalls/major.js'
-import Critical from './ExampleAPICalls/critical.js'
+import None from './ExampleAPICalls/none'
+import Minor from './ExampleAPICalls/minor'
+import Major from './ExampleAPICalls/major'
+import Critical from './ExampleAPICalls/critical'
 
 export const AddURL = 'add'
 

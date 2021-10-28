@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 // Helpers
-import { deleteAdded } from '../helpers/addActive.js'
+import { deleteAdded } from '../helpers/addActive'
 
 const RemoveAddedAPI = (props) => {
     const { addedAPISArray } = props

@@ -3,8 +3,8 @@ import { useCookies } from 'react-cookie'
 // Components
 import CheckBoxes from '../components/CheckBoxes'
 // Helpers
-import { APIs, excludedAPIs } from '../helpers/statusAPIObjects.js'
-import { toggleStatusAPI as toggleStatus } from '../helpers/addActive.js'
+import { APIs, excludedAPIs } from '../helpers/statusAPIObjects'
+import { toggleStatusAPI as toggleStatus } from '../helpers/addActive'
 
 const ActivateSection = (props) => {
     const { 

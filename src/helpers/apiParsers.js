@@ -1,4 +1,5 @@
-import { capitalizeFirstLetter } from './basic.js'
+// Helpers
+import { capitalizeFirstLetter } from './basic'
 
 const addHTTPS = (apiLink) => {
     let checkForHTPS = new RegExp('https://')

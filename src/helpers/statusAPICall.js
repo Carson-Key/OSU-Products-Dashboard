@@ -1,5 +1,5 @@
 // Helpers
-import { defaultKeyValue } from './basic.js'
+import { defaultKeyValue } from './basic'
 // Objects
 import { AddURL, addAPISummaryState } from './statusAPIObjects'
 

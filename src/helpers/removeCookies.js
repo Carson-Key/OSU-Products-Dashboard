@@ -1,6 +1,6 @@
 // Helpers
-import { addDefaultAPIs } from "./addAPI"
-import { excludedAPIs } from "./statusAPIObjects"
+import { addDefaultAPIs } from './addAPI'
+import { excludedAPIs } from './statusAPIObjects'
 
 const generateActiveAPIs = (apis) => {
     if (apis) {

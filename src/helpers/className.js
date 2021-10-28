@@ -1,6 +1,6 @@
 // Helpers
-import { defaultKeyValue } from './basic.js'
-import { notificationTypes } from './notificationHandling/notificationHelpers.js'
+import { defaultKeyValue } from './basic'
+import { notificationTypes } from './notificationHandling/notificationHelpers'
 
 const notificationBGColors = {
     [notificationTypes.error]: "bg-red-400 ",

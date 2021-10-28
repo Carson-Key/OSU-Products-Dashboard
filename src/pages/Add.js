@@ -6,11 +6,11 @@ import { useHistory } from 'react-router-dom'
 // Components
 import Loading from '../components/Loading'
 // Helpers
-import { addNewAPI } from '../helpers/addAPI.js'
-import { loadToHomePage, determineIfAddRouteFinished } from '../helpers/loading.js'
-import { generateAPIsObjectFromParams } from '../helpers/apiParsers.js'
+import { addNewAPI } from '../helpers/addAPI'
+import { loadToHomePage, determineIfAddRouteFinished } from '../helpers/loading'
+import { generateAPIsObjectFromParams } from '../helpers/apiParsers'
 // Contexts
-import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
+import { NotificationContext } from '../helpers/notificationHandling/NotificationContext'
 
 const Add = () => {
     let history = useHistory()

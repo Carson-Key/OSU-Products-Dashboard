@@ -1,8 +1,8 @@
 // Helpers
-import { checkIfLinkIsLive, checkIfAddedAPICookieExsists, checkIfNewUser } from './validateAPI.js'
-import { generateAPIObject } from './apiParsers.js'
-import { fireError } from './notificationHandling/notificationHelpers.js'
-import { excludedAPIs } from './statusAPIObjects.js'
+import { checkIfLinkIsLive, checkIfAddedAPICookieExsists, checkIfNewUser } from './validateAPI'
+import { generateAPIObject } from './apiParsers'
+import { fireError } from './notificationHandling/notificationHelpers'
+import { excludedAPIs } from './statusAPIObjects'
 
 let ADDEDAPIS = {}
 let COOKIEFRIENDLYAPIS = {}

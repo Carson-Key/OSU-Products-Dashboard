@@ -3,7 +3,7 @@ import { useContext } from 'react'
 // Components
 import Notification from '../components/Notification'
 // Contexts
-import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
+import { NotificationContext } from '../helpers/notificationHandling/NotificationContext'
 
 const NoificationHandler = () => {
 	const [state, dispatch] = useContext(NotificationContext)
