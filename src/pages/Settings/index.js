@@ -7,19 +7,13 @@ import ActivateSection from '../../UI/ActivateSection'
 import AddAPI from '../../UI/AddAPI'
 import RemoveAddedAPI from '../../UI/RemoveAddedAPI'
 // Helpers
-import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
-import { toggleStatusAPI as toggleStatus, saveNewConfig } from '../../helpers/addActive.js'
+import { saveNewConfig } from '../../helpers/addActive.js'
 
 const Settings = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
-    const defaultAPISArray = Object.keys(excludedAPIs())
     const addedAPISArray = Object.keys(apiCookie.addedAPIs ? apiCookie.addedAPIs : {})
-
-    const toggleStatusAPI = (event, api, apiObjec) => {
-        toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
-    }
 
     useEffect(() => {
         setEnabledCards({...apiCookie.APIs})
@@ -29,11 +23,9 @@ const Settings = () => {
         <div className="flex flex-wrap justify-evenly">
             <form className="w-2/3 grid grid-cols-2 gap-2">
                 <ActivateSection
-                    toggleStatusAPI={toggleStatusAPI}
-                    defaultAPISArray={defaultAPISArray}
                     enabledCards={enabledCards}
+                    setEnabledCards={setEnabledCards}
                     addedAPISArray={addedAPISArray} 
-                    addedAPIs={apiCookie.addedAPIs}
                 />
                 <AddAPI />
                 <RemoveAddedAPI

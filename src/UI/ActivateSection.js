@@ -1,16 +1,26 @@
+// Packages
+import { useCookies } from 'react-cookie'
 // Components
 import CheckBoxes from '../components/CheckBoxes'
 // Helpers
-import { APIs } from '../helpers/statusAPIObjects.js'
+import { APIs, excludedAPIs } from '../helpers/statusAPIObjects.js'
+import { toggleStatusAPI as toggleStatus } from '../helpers/addActive.js'
 
 const ActivateSection = (props) => {
     const { 
-        toggleStatusAPI, 
-        defaultAPISArray, 
         enabledCards, 
-        addedAPISArray, 
-        addedAPIs
+        setEnabledCards,
+        addedAPISArray
     } = props
+    const defaultAPISArray = Object.keys(excludedAPIs())
+    const [apiCookie, setApiCookie] = useCookies(['APIs'])
+
+    // To please the compiler warnings
+    if (setApiCookie) {}
+
+    const toggleStatusAPI = (event, api, apiObjec) => {
+        toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
+    }
 
 	return (
         <section className="grid grid-cols-1 border-2 row-span-2">
@@ -29,7 +39,7 @@ const ActivateSection = (props) => {
                     checkBoxArray={addedAPISArray} 
                     enabledCheckBoxes={enabledCards} 
                     toggleStatus={toggleStatusAPI} 
-                    apiObject={addedAPIs}
+                    apiObject={apiCookie.addedAPIs}
                 />
             </div>
         </section>
