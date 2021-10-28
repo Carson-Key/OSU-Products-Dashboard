@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 // UIs
 import ActivateSection from '../../UI/ActivateSection'
 import AddAPI from '../../UI/AddAPI'
+import RemoveAddedAPI from '../../UI/RemoveAddedAPI'
 // Helpers
 import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
@@ -38,18 +39,9 @@ const Settings = () => {
                     addedAPIs={apiCookie.addedAPIs}
                 />
                 <AddAPI />
-                <section className="flex flex-wrap justify-evenly border-2">
-                    {
-                        addedAPISArray.map((api, i) => {
-                            return (
-                                <label key={i} className="grid grid-cols-1 w-24 font-semibold px-2 py-1">
-                                    {api}
-                                    <button className="text-white bg-red-500" onClick={() => {deleteAddedAPI(api)}}>Remove</button>
-                                </label>
-                            )
-                        })
-                    }
-                </section>
+                <RemoveAddedAPI
+                    addedAPISArray={addedAPISArray} 
+                />
                 <section className="col-span-2 mx-auto my-10">
                     <button className="border-2 px-2" onClick={(event) => {
                         event.preventDefault()
