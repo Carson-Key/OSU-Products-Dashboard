@@ -3,19 +3,16 @@ import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
 // Helpers
-import { removeActiveCookies } from '../../helpers/removeCookies'
+import { removeAddedCookies } from '../helpers/removeCookies'
 
 const ResetActiveAPIs = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie, removeCookie] = useCookies(['APIs'])
-
-    // To please the compiler
-    if (apiCookie) {}
     
     useEffect(() => {
-        removeActiveCookies(removeCookie, setApiCookie)
+        removeAddedCookies(apiCookie, setApiCookie, removeCookie)
         history.push("/")
-    }, [history, removeCookie, setApiCookie])
+    }, [history, removeCookie, apiCookie, setApiCookie])
 
 	return (
         <></>

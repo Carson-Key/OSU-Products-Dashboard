@@ -1,17 +1,17 @@
 // Packages
 import { useEffect, useState } from 'react'
 // Component
-import StatusHead from '../StatusHead'
-import StatusRender from '../StatusRender'
-import Incidents from '../Incidents'
-import Loading from '../Loading'
-import StatusNone from '../StatusNone'
-import AddNewStatus from '../AddNewStatus'
-import AddStatusHead from '../AddStatusHead'
+import StatusHead from './StatusHead'
+import StatusRender from './StatusRender'
+import Incidents from './Incidents'
+import Loading from './Loading'
+import StatusNone from './StatusNone'
+import AddNewStatus from './AddNewStatus'
+import AddStatusHead from './AddStatusHead'
 // Helpers
-import { apiInitSummaryState } from '../../helpers/statusAPIObjects'
-import { fetchJSON } from '../../helpers/statusAPICall.js'
-import { determineStatusBG, determineStatusBorder } from '../../helpers/className'
+import { apiInitSummaryState } from '../helpers/statusAPIObjects'
+import { fetchJSON } from '../helpers/statusAPICall.js'
+import { determineStatusBG, determineStatusBorder } from '../helpers/className'
 
 const Summary = (props) => {
     const { api } = props

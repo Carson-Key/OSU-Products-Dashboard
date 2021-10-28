@@ -1,7 +1,7 @@
 // Package
 import { useCookies } from 'react-cookie'
 // Components
-import Summary from '../../components/Summary'
+import Summary from '../components/Summary'
 
 
 const Dashboard = () => {

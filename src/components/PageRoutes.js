@@ -1,11 +1,11 @@
 // Packages
 import { Switch, Route } from 'react-router-dom'
 // Pages
-import Dashboard from '../../pages/Dashboard'
-import Add from '../../pages/Add'
-import Settings from '../../pages/Settings'
-import ResetActiveAPIs from '../../pages/ResetActiveAPIs'
-import ResetAddedAPIs from '../../pages/ResetAddedAPIs'
+import Dashboard from '../pages/Dashboard'
+import Add from '../pages/Add'
+import Settings from '../pages/Setttings'
+import ResetActiveAPIs from '../pages/ResetActiveAPIs'
+import ResetAddedAPIs from '../pages/ResetAddedAPIs'
 
 const PageRoutes = () => {
 	return (

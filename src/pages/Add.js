@@ -4,13 +4,13 @@ import { useCookies } from 'react-cookie'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 // Components
-import Loading from '../../components/Loading'
+import Loading from '../components/Loading'
 // Helpers
-import { addNewAPI } from '../../helpers/addAPI.js'
-import { loadToHomePage, determineIfAddRouteFinished } from '../../helpers/loading.js'
-import { generateAPIsObjectFromParams } from '../../helpers/apiParsers.js'
+import { addNewAPI } from '../helpers/addAPI.js'
+import { loadToHomePage, determineIfAddRouteFinished } from '../helpers/loading.js'
+import { generateAPIsObjectFromParams } from '../helpers/apiParsers.js'
 // Contexts
-import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
+import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
 
 const Add = () => {
     let history = useHistory()

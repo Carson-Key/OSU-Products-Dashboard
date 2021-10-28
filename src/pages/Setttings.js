@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
 // UIs
-import ActivateSection from '../../UI/ActivateSection'
-import AddAPI from '../../UI/AddAPI'
-import RemoveAddedAPI from '../../UI/RemoveAddedAPI'
+import ActivateSection from '../UI/ActivateSection'
+import AddAPI from '../UI/AddAPI'
+import RemoveAddedAPI from '../UI/RemoveAddedAPI'
 // Helpers
-import { saveNewConfig } from '../../helpers/addActive.js'
+import { saveNewConfig } from '../helpers/addActive.js'
 
 const Settings = () => {
     let history = useHistory()

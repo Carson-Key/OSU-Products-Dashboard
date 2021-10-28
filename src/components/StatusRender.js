@@ -1,5 +1,5 @@
 // Helpers
-import { defaultKeyValue } from '../../helpers/basic.js'
+import { defaultKeyValue } from '../helpers/basic.js'
 
 const StatusRender = (props) => {
     const { status, renderObject } = props
