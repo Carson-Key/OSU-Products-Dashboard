@@ -1,9 +1,9 @@
 // Packages
 import {BrowserRouter as Router} from 'react-router-dom'
 // Components
-import Header from './components/Header'
+import Header from './UI/Header'
 import PageRoutes from './components/PageRoutes'
-import NotificationHandler from './components/NotificationHandler'
+import NotificationHandler from './UI/NotificationHandler'
 import LoadDefaultAPIs from './components/LoadDefaultAPIs'
 
 const App = () => {

@@ -1,7 +1,7 @@
 // Packageds
 import { useContext } from 'react'
 // Components
-import Notification from './Notification'
+import Notification from '../components/Notification'
 // Contexts
 import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
 
