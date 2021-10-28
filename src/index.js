@@ -5,12 +5,15 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { CookiesProvider } from 'react-cookie'
 import NotificationStore from './helpers/notificationHandling/NotificationContext'
+import PopUpStore from './helpers/popUpHandling/PopUpContext'
 
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
       <NotificationStore>
-        <App />
+        <PopUpStore>
+          <App />
+        </PopUpStore>
       </NotificationStore>
     </CookiesProvider>
   </React.StrictMode>,
