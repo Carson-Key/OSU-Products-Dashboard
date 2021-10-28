@@ -8,7 +8,7 @@ import AddAPI from '../../UI/AddAPI'
 import RemoveAddedAPI from '../../UI/RemoveAddedAPI'
 // Helpers
 import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
-import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
+import { toggleStatusAPI as toggleStatus, saveNewConfig } from '../../helpers/addActive.js'
 
 const Settings = () => {
     let history = useHistory()
@@ -19,9 +19,6 @@ const Settings = () => {
 
     const toggleStatusAPI = (event, api, apiObjec) => {
         toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
-    }
-    const deleteAddedAPI = (api) => {
-        deleteAdded(apiCookie, api, setApiCookie, enabledCards, setEnabledCards)
     }
 
     useEffect(() => {
