@@ -1,9 +1,10 @@
 // Packages
 import {BrowserRouter as Router} from 'react-router-dom'
-// Components
+// UI
 import Header from './UI/Header'
-import PageRoutes from './components/PageRoutes'
 import NotificationHandler from './UI/NotificationHandler'
+import Body from './UI/Body'
+// Components
 import LoadDefaultAPIs from './components/LoadDefaultAPIs'
 
 const App = () => {
@@ -12,9 +13,7 @@ const App = () => {
 			<LoadDefaultAPIs />
 			<NotificationHandler />
 			<Header />
-			<main className="my-10">
-				<PageRoutes />
-			</main>
+			<Body />
 		</Router>
 	)
 }
