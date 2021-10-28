@@ -4,11 +4,9 @@ import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
 // UIs
 import ActivateSection from '../../UI/ActivateSection'
-// Components
-import Input from '../../components/Input'
+import AddAPI from '../../UI/AddAPI'
 // Helpers
 import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
-import { addNewAPI } from '../../helpers/addAPI.js'
 import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
 // Contexts
 import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
@@ -17,8 +15,6 @@ const Settings = () => {
     let history = useHistory()
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
-    const [apiName, setAPIName] = useState("")
-    const [apiLink, setAPILink] = useState("")
     const defaultAPISArray = Object.keys(excludedAPIs())
     const addedAPISArray = Object.keys(apiCookie.addedAPIs ? apiCookie.addedAPIs : {})
     const [notificationState, notificationDispatch] = useContext(NotificationContext)
@@ -31,9 +27,6 @@ const Settings = () => {
     }
     const deleteAddedAPI = (api) => {
         deleteAdded(apiCookie, api, setApiCookie, enabledCards, setEnabledCards)
-    }
-    const setInputField = (event, setState) => {
-        setState(event.target.value)
     }
 
     useEffect(() => {
@@ -50,32 +43,9 @@ const Settings = () => {
                     addedAPISArray={addedAPISArray} 
                     addedAPIs={apiCookie.addedAPIs}
                 />
-                <section className="grid grid-cols-1 border-2">
-                    <Input 
-                        onChange={(event) => {
-                            setInputField(event, setAPIName)
-                        }}
-                        labelClass="w-full"
-                        inputClass="border-2"
-                        name="name"
-                        labelText="Product Name:"
-                        type="text"
-                    />
-                    <Input 
-                        onChange={(event) => {
-                            setInputField(event, setAPILink)
-                        }}
-                        labelClass="w-full"
-                        inputClass="border-2"
-                        name="link"
-                        labelText="Product Status Page Link:"
-                        type="text"
-                    />
-                    <button className="border-2 px-2 w-20 mx-auto" onClick={(event) => {
-                        event.preventDefault()
-                        addNewAPI([{name: apiName, link: apiLink}], apiCookie, setApiCookie,  notificationDispatch)
-                    }}>Add</button>
-                </section>
+                <AddAPI 
+                    notificationDispatch={notificationDispatch} 
+                />
                 <section className="flex flex-wrap justify-evenly border-2">
                     {
                         addedAPISArray.map((api, i) => {
