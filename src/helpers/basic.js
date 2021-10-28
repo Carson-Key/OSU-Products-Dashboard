@@ -20,3 +20,11 @@ export const capitalizeFirstLetter = (string) => {
 export const defaultKeyValue = (status, returnValues = defaultReturns) => {
     return returnValues[status] ? returnValues[status] : returnValues.other
 }
+
+export const toggleOnlyTrueToFalse = (boolean) => {
+    if (boolean) {
+        return !boolean
+    } else {
+        return boolean
+    }
+}

@@ -1,5 +1,6 @@
 // Helpers
 import { checkIfLinkIsLive, checkIfAddedAPICookieExsists, checkIfNewUser } from './validateAPI'
+import { checkIfValidInput } from './validateInput'
 import { generateAPIObject } from './apiParsers'
 import { fireError } from './notificationHandling/notificationHelpers'
 import { excludedAPIs } from './statusAPIObjects'
@@ -18,40 +19,48 @@ const setDefaultAPICookies = (setApiCookie, apiCookie) => {
 }
 
 async function checkIfAPIValid(apis, apiCookie, dispatch) {
-    await Promise.all(apis.map(async (api, i) => {
-        const apiObject = generateAPIObject(api.name, api.link)
-    
-        const onComplete = {
-            checkIfLinkIsLive: {
-                onSuccess: () => {
-                    checkIfAddedAPICookieExsists(
-                        apiCookie, 
-                        onComplete.checkIfAddedAPICookieExsists.onSuccess,
-                        onComplete.checkIfAddedAPICookieExsists.onFail
-                    )
+    if (checkIfValidInput(apis)) {
+        await Promise.all(apis.map(async (api, i) => {
+            const apiObject = generateAPIObject(api.name, api.link)
+        
+            const onComplete = {
+                checkIfValidInput: {
+                    onSuccess: () => {},
+                    onFail: () => {}
                 },
-                onFail: (message) => {
-                    fireError(message, dispatch)
-                }
-            },
-            checkIfAddedAPICookieExsists: {
-                onSuccess: () => {
-                    COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
-                    ADDEDAPIS = apiCookie.addedAPIs
+                checkIfLinkIsLive: {
+                    onSuccess: () => {
+                        checkIfAddedAPICookieExsists(
+                            apiCookie, 
+                            onComplete.checkIfAddedAPICookieExsists.onSuccess,
+                            onComplete.checkIfAddedAPICookieExsists.onFail
+                        )
+                    },
+                    onFail: (message) => {
+                        fireError(message, dispatch)
+                    }
                 },
-                onFail: () => {
-                    COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
-                    ADDEDAPIS = {}
+                checkIfAddedAPICookieExsists: {
+                    onSuccess: () => {
+                        COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
+                        ADDEDAPIS = apiCookie.addedAPIs
+                    },
+                    onFail: () => {
+                        COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
+                        ADDEDAPIS = {}
+                    }
                 }
             }
-        }
-
-        await checkIfLinkIsLive(
-            apiObject.link, 
-            onComplete.checkIfLinkIsLive.onSuccess, 
-            onComplete.checkIfLinkIsLive.onFail
-        )
-    }))
+            
+            await checkIfLinkIsLive(
+                apiObject.link, 
+                onComplete.checkIfLinkIsLive.onSuccess, 
+                onComplete.checkIfLinkIsLive.onFail
+            )
+        }))
+    } else {
+        fireError("Please enter name and/or link into the the text fields before you attempt to add a new status card", dispatch)
+    }
 }
 
 export const addDefaultAPIs = (apiCookie, setApiCookie) => {
