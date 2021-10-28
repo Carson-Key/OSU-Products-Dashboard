@@ -1,5 +1,5 @@
 // Package
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
 // UIs
@@ -8,8 +8,6 @@ import AddAPI from '../../UI/AddAPI'
 // Helpers
 import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
-// Contexts
-import { NotificationContext } from '../../helpers/notificationHandling/NotificationContext.js'
 
 const Settings = () => {
     let history = useHistory()
@@ -17,10 +15,6 @@ const Settings = () => {
     const [enabledCards, setEnabledCards] = useState({...apiCookie.APIs})
     const defaultAPISArray = Object.keys(excludedAPIs())
     const addedAPISArray = Object.keys(apiCookie.addedAPIs ? apiCookie.addedAPIs : {})
-    const [notificationState, notificationDispatch] = useContext(NotificationContext)
-
-    // To satisfy the compiler warnings
-    if (notificationState) {}
 
     const toggleStatusAPI = (event, api, apiObjec) => {
         toggleStatus(api, apiObjec, enabledCards, setEnabledCards)
@@ -43,9 +37,7 @@ const Settings = () => {
                     addedAPISArray={addedAPISArray} 
                     addedAPIs={apiCookie.addedAPIs}
                 />
-                <AddAPI 
-                    notificationDispatch={notificationDispatch} 
-                />
+                <AddAPI />
                 <section className="flex flex-wrap justify-evenly border-2">
                     {
                         addedAPISArray.map((api, i) => {

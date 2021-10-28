@@ -1,16 +1,21 @@
 // Package
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
 // Components
 import Input from '../components/Input'
 // Helper
 import { addNewAPI } from '../helpers/addAPI.js'
+// Contexts
+import { NotificationContext } from '../helpers/notificationHandling/NotificationContext.js'
 
-const AddAPI = (props) => {
-    const { notificationDispatch } = props
+const AddAPI = () => {
     const [apiCookie, setApiCookie] = useCookies(['APIs'])
     const [apiName, setAPIName] = useState("")
     const [apiLink, setAPILink] = useState("")
+    const [notificationState, notificationDispatch] = useContext(NotificationContext)
+
+    // To satisfy the compiler warnings
+    if (notificationState) {}
 
     const setInputField = (event, setState) => {
         setState(event.target.value)
