@@ -4,9 +4,12 @@ import { generateAPIObject } from './apiParsers.js'
 import { fireError } from './notificationHandling/notificationHelpers.js'
 import { excludedAPIs } from './statusAPIObjects.js'
 
-const setCookies = (setApiCookie, apiObject, activeAPIs, addedAPIs = {}) => {
-    setApiCookie('addedAPIs', { ...addedAPIs, ...apiObject }, { path: '/' })
-    setApiCookie('APIs', { ...activeAPIs, ...apiObject }, { path: '/' })
+let ADDEDAPIS = {}
+let COOKIEFRIENDLYAPIS = {}
+
+const setCookies = (setApiCookie, activeAPIs) => {
+    setApiCookie('addedAPIs', { ...ADDEDAPIS, ...COOKIEFRIENDLYAPIS }, { path: '/' })
+    setApiCookie('APIs', { ...activeAPIs, ...COOKIEFRIENDLYAPIS }, { path: '/' })
 }
 
 const setDefaultAPICookies = (setApiCookie, apiCookie) => {
@@ -14,7 +17,7 @@ const setDefaultAPICookies = (setApiCookie, apiCookie) => {
     setApiCookie('APIs', {...apiCookie.APIs, ...excludedAPIs()}, { path: '/' })
 }
 
-async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch) {
+async function checkIfAPIValid(apis, apiCookie, dispatch) {
     await Promise.all(apis.map(async (api, i) => {
         const apiObject = generateAPIObject(api.name, api.link)
     
@@ -33,12 +36,12 @@ async function checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, d
             },
             checkIfAddedAPICookieExsists: {
                 onSuccess: () => {
-                    cookieFriendlyAPIs[apiObject.name] = apiObject
-                    addedAPIs = apiCookie.addedAPIs
+                    COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
+                    ADDEDAPIS = apiCookie.addedAPIs
                 },
                 onFail: () => {
-                    cookieFriendlyAPIs[apiObject.name] = apiObject
-                    addedAPIs = {}
+                    COOKIEFRIENDLYAPIS[apiObject.name] = apiObject
+                    ADDEDAPIS = {}
                 }
             }
         }
@@ -63,11 +66,8 @@ export const addDefaultAPIs = (apiCookie, setApiCookie) => {
 }
 
 export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
-    let addedAPIs = {}
-    let cookieFriendlyAPIs = {}
-
-    await checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
+    await checkIfAPIValid(apis, apiCookie, dispatch)
 
     const currentAPIs = addDefaultAPIs(apiCookie, setApiCookie)
-    setCookies(setApiCookie, cookieFriendlyAPIs, currentAPIs, addedAPIs)
+    setCookies(setApiCookie, currentAPIs)
 }
