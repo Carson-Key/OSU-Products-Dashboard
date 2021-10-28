@@ -15,7 +15,7 @@ const PopUpHandler = () => {
 		case true:
 			return (
 				<PopUp>
-                    {state.PopUp.children}
+                    {state.popup.children}
 				</PopUp>
 			)
 		default:
