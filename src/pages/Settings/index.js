@@ -2,11 +2,12 @@
 import { useState, useContext, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom'
+// UIs
+import ActivateSection from '../../UI/ActivateSection'
 // Components
-import CheckBoxes from '../../components/CheckBoxes'
 import Input from '../../components/Input'
 // Helpers
-import { APIs, excludedAPIs } from '../../helpers/statusAPIObjects.js'
+import { excludedAPIs } from '../../helpers/statusAPIObjects.js'
 import { addNewAPI } from '../../helpers/addAPI.js'
 import { toggleStatusAPI as toggleStatus, saveNewConfig, deleteAdded } from '../../helpers/addActive.js'
 // Contexts
@@ -42,26 +43,13 @@ const Settings = () => {
 	return (
         <div className="flex flex-wrap justify-evenly">
             <form className="w-2/3 grid grid-cols-2 gap-2">
-                <section className="grid grid-cols-1 border-2 row-span-2">
-                    <div>
-                        <h3>Default Products</h3>
-                        <CheckBoxes 
-                            checkBoxArray={defaultAPISArray} 
-                            enabledCheckBoxes={enabledCards} 
-                            toggleStatus={toggleStatusAPI} 
-                            apiObject={APIs}
-                        />
-                    </div>
-                    <div>
-                        <h3>User Added Products</h3>
-                        <CheckBoxes 
-                            checkBoxArray={addedAPISArray} 
-                            enabledCheckBoxes={enabledCards} 
-                            toggleStatus={toggleStatusAPI} 
-                            apiObject={apiCookie.addedAPIs}
-                        />
-                    </div>
-                </section>
+                <ActivateSection
+                    toggleStatusAPI={toggleStatusAPI}
+                    defaultAPISArray={defaultAPISArray}
+                    enabledCards={enabledCards}
+                    addedAPISArray={addedAPISArray} 
+                    addedAPIs={apiCookie.addedAPIs}
+                />
                 <section className="grid grid-cols-1 border-2">
                     <Input 
                         onChange={(event) => {
