@@ -69,6 +69,5 @@ export async function addNewAPI(apis, apiCookie, setApiCookie, dispatch) {
     await checkIfAPIValid(addedAPIs, cookieFriendlyAPIs, apis, apiCookie, dispatch)
 
     const currentAPIs = addDefaultAPIs(apiCookie, setApiCookie)
-    console.log(currentAPIs)
     setCookies(setApiCookie, cookieFriendlyAPIs, currentAPIs, addedAPIs)
 }
