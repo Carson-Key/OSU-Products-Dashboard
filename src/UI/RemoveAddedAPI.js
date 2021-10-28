@@ -1,9 +1,10 @@
 // Package
 import { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
+// Components
+import RemoveAPIPopUp from '../components/RemoveAPIPopUp'
 // Helpers
-import { deleteAdded } from '../helpers/addActive'
-import { activatePopUp, deactivatePopUp } from '../helpers/popUpHandling/popUpHelpers'
+import { activatePopUp } from '../helpers/popUpHandling/popUpHelpers'
 // Contexts
 import { PopUpContext } from '../helpers/popUpHandling/PopUpContext'
 
@@ -18,16 +19,13 @@ const RemoveAddedAPI = (props) => {
 
     const deleteAddedAPI = (api) => {
         activatePopUp((
-            <>
-                <p>Are you sure that you wish to remove this status card?</p>
-                <div className="flex justify-center gap-x-2 my-5">
-                <button onClick={() => {
-                    deleteAdded(apiCookie, api, setApiCookie, enabledCards, setEnabledCards)
-                    deactivatePopUp(popUpDispatch)
-                }} className="bg-red-500 text-white px-2 py-1">Yes</button>
-                <button onClick={() => {deactivatePopUp(popUpDispatch)}} className="bg-gray-500 text-white px-2 py-1">No</button>
-                </div>
-            </>
+            <RemoveAPIPopUp
+                apiCookie={apiCookie}
+                api={api}
+                setApiCookie={setApiCookie}
+                enabledCards={enabledCards}
+                setEnabledCards={setEnabledCards}
+            />
         ), popUpDispatch)
     }
 
